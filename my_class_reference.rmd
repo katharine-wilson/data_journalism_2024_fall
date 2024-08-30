@@ -33,3 +33,27 @@ setwd("~/jour472/data_journalism_2024_fall")
 install.packages("tidyverse")
 library(tidyverse)
 ```
+
+### How to name variables
+```{r}
+example <-2
+```
+
+### How to import data 
+```{r}
+variable_name <- read_rds("datatable_from_rdsfile")
+```
+
+### How to see a list of columns, data type per column and first few values
+```{r}
+glimpse(variable_name)
+```
+
+### How to count # of contributions
+```{r}
+variable_name |>
+  group_by(memo_text)|>
+  summarize(count_contribs = n()
+            )
+```
+
