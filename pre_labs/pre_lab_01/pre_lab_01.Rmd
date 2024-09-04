@@ -48,7 +48,7 @@ number * number
 
 What does it return? Type your answer below:
 
-**Answer:**
+This multiplies 2 by itself. 
 
 ### Task 3: Install packages
 
@@ -88,7 +88,7 @@ maryland_winred_contributions <- read_rds("pre_lab_01.rds")
 
 Once it loads, look at the environment window at right in RStudio for maryland_winred_contributions. It's next to a small blue circle with a white arrow in it. To the right of that, look at how many "obs" the dataset has ("obs" is short for observation, which is another way of saying rows or records). Look at how many variables it has (another way of saying columns or fields). Write the number of observations and variables below.
 
-**Answer**
+24 columns (variables), 13,1395 rows (observations)
 
 ### Task 3: Glimpse data
 
@@ -98,7 +98,7 @@ Once it loads, look at the environment window at right in RStudio for maryland_w
 glimpse(maryland_winred_contributions)
 ```
 
-In the space below, write the data type for the "last_name" column and the "amount" columns (it's in light gray, offset by \< \>). Also offer your best guess as to what the "last_name" column and the "amount" column represent. **Answer**
+In the space below, write the data type for the "last_name" column and the "amount" columns (it's in light gray, offset by \< \>). Also offer your best guess as to what the "last_name" column and the "amount" column represent.
 
 The data type for "last_name" is character. The "amount" column is a number. I guess that the "last_name" column represents the last name of the person who donated through Win Red. The "amount" likely represets the amount of money donated by the person through Win Red.  
 
@@ -110,7 +110,7 @@ The data type for "last_name" is character. The "amount" column is a number. I g
 head(maryland_winred_contributions)
 ```
 
-In the space below, write the first and last name from the _second_ row of the data. **Answer**
+In the space below, write the first and last name from the _second_ row of the data. 
 
 Peggy Mukai
 
@@ -132,7 +132,7 @@ maryland_winred_contributions |>
 
 Describe what you think this code is doing below. What does the answer represent, compared to the results from `head()`?
 
-**Answer**
+This code is grouping the number of contributions to Win Red by date. 
 
 ### Task 7: Adding arrange()
 
@@ -149,7 +149,7 @@ contribs_by_date <- maryland_winred_contributions |>
 
 Compared to the previous codeblock, what has changed and how did that affect the result?
 
-**Answer**
+This groups the number of contributions by decending order. This allows us to clearly see what days did the most amount of contributions come in through Win Red. 
 
 ### Task 8: Multiple grouping
 
@@ -166,8 +166,7 @@ maryland_winred_contributions |>
 
 Compared to the previous codeblock, what has changed and how did that affect the result?
 
-**Answer**
-
+This adds the memo data, allowing us to see what campaign the contribution is earmarked for, and amount of each value of contribution. 
 ### Task 9
 
 **Task** Run the following codeblock:
@@ -184,8 +183,7 @@ maryland_winred_contributions |>
 
 Compared to the previous codeblock, what has changed and how did that affect the result? 
 
-**Answer**
-
+This totals the number of and amount of contributons per campaign. 
 ### Task 10: More descriptive statistics
 
 **Task** Run the following codeblock to group the maryland_winred_contributions dataframe by the recipient for each contribution. Then do the following summarizations for each group:count the number of contributions, add up the value of all contributions, and calculate the mean and median contribution amounts. Then sort so the recipient with the most contributions is listed first.
@@ -204,8 +202,7 @@ maryland_winred_contributions |>
 
 Compared to the previous codeblock, what has changed and how did that affect the result? Glancing at the names, which of the top results from Maryland?
 
-**Answer**
-
+This included the mean and median amount of donations per campaign. The top campaign Marylanders contributed to through Win Red was the Trump reelection campaign. 
 ### Task 11
 
 **Task** Run the following codeblock to group the maryland_winred_contributions dataframe by the city for each contribution. Then do the following summarizations for each group:count the number of contributions, add up the value of all contributions, calculate the mean and median contributions amounts and calculate the smallest and largest contributions Then sort so the city with the largest total contribution amount is listed first.
@@ -225,3 +222,4 @@ maryland_winred_contributions |>
 ```
 
 Compared to the previous codeblock, what has changed and how did that affect the result? How is the data sorted? **Answer**
+The data is now grouped by city. This allows us to understand what cities are contributing the most to Win Red. 
