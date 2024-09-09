@@ -57,3 +57,28 @@ variable_name |>
             )
 ```
 
+### How to order something (decending)
+```{r}
+  arrange(desc(total_amount))
+```
+### Order accending
+```{r}
+  arrange(total_amount)
+```
+
+### How to show min/max/median/mean
+```{r}
+wv_summary <-westvirginia_winred_contributions |>
+  group_by(memo_text) |>
+  summarise(
+    count_contribs = n(),
+    total_amount = sum(amount),
+    mean_amount = mean(amount),
+    median_amount = median(amount),
+    min_amount = min(amount),
+    max_amount = max(amount)
+  ) |>
+  arrange(desc(total_amount))
+```
+```
+
