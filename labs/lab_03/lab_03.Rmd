@@ -115,5 +115,10 @@ Q3: Let's look at top individual donors. Write code to generate a list of top do
 A3:
 
 ```{r}
-
-```
+top_donors <- md_contribs |>
+  group_by(contributor_name)|>
+  summarize(
+    total = sum(contributor_name)
+                )|>
+  arrange(desc(total))
+  ```
