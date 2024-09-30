@@ -112,8 +112,7 @@ senate_expenses_clean|>
      amount_per_month = sum(amount)
   )|>
   arrange(desc(amount_per_month))
-```
-
+ 
 **Q4.** Which committee has the larger payroll or salary spending so far? How many unique recipients of payroll/staff spending are there for each candidate?
 
 **A4.**
