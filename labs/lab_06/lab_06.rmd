@@ -101,21 +101,40 @@ To answer the following questions, you'll need to calculate percentages and do o
 
 ```{r}
 # Party registrations
+new_reg_party_2022 <- read_csv("new_reg_party_2022.csv")
+new_reg_party_2022 <- new_reg_party_2022 |>
+  rename(SUMMARY= ...1)
+  
 ```
 
 ```{r}
 # Removals
-removals_2022 <-read.csv("removals_2022")
+removals_2022 <-read_csv("removals_2022.csv")
+removals_2022 <- removals_2022 |>
+  rename(WHY= ...1)
 ```
 
 ```{r}
 # Changes
-
+changes_2022 <- read_csv("changes_2022.csv")
+changes_2022 <-changes_2022|>
+  rename(COUNTY = ...1)
 ```
 
 ```{r}
 # Current registrations
-
+fullsecondpage_2022 <- read_csv("fullsecondpage_2022.csv")
+changes_2022 <- fullsecondpage_2022 |>
+    rename(COUNTY = ...1)|>
+    rename(DEM = DEM...12)|>
+    rename(REP = REP...13)|>
+    rename(GRN = GRN...14)|>
+    rename(LIB = LIB...15)|>
+    rename(WCP = WCP...16)|>
+    rename(UNAF = UNAF...17)|>
+    rename(OTH = OTH...18)|>
+    rename(TOTAL = TOTAL...19)|>
+    select(COUNTY,DEM,REP,GRN,LIB,WCP,UNAF,OTH,TOTAL)
 ```
 
 ## Answer questions
