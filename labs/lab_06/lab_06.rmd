@@ -141,43 +141,75 @@ party_registrations_2022 <- party_registrations_2022 |>
 
 Q1. Calculate the percentage of registered Democrats, Republicans and unaffiliated voters for the entire state in September 2024 and September 2022, and then calculate the percentage change for those three party categories (the formula for percentage change is easy to remember: (New-Old)/Old). How would you describe the changes in these partisan categories in a story? What's the most interesting thing about these changes that would be the lede of that story?
 
-A1.54% of registered voters were Democrats in 2022 and 52% were Democrats in 2024. This was over a 1 percent decrease in overall registered Democrats. In 2024, 23% of registered voters were Republicans, a decrease from 24% in 2022. 
-#For Democrats 2024 (according to "total")
+A1.54% of registered voters were Democrats in 2022 and 52% were Democrats in 2024. This was over a 1 percent decrease in overall registered Democrats. In 2024, 23% of registered voters were Republicans, a decrease from 24% in 2022. However, that year, the number of registered Republicans actually increased by over 1%. In 2024, 21% of registered voters were unaffiliated and in 2022 that percent was 20%. The amount of unaffiliated voters in the state increased by over 9.7%. 
+
+In a story; 
+The proportions of party members among Democrats, Republicans and unaffiliated voters have stayed relitavely the same accross Maryland since 2022. However, the number of unaffiliated voters has increased by nearly 10%. 
+```{r}
+# % of registered voters that were Democrats in 2024
 (2219417/4231403)*100
 ```
+
 ```{r}
-#For Democrats 2022 (according to "total")
+# % of registered voters that were Democrats in 2022
 (2250961/4161637)*100
 ```
 
 ```{r}
-#Democrat percent change raw # of registered voters
+# Percent change of # of Democratic voters 
 ((2219417 - 2250961)/2250961)*100
-#Democrat percent change of proportion of registered voters
-((52.45109 - 54.08836)/54.08836)*100
-
 ```
 
 ```{r}
-#For Republicans 2024 (according to "total")
+# % of registered voters that were Republicans in 2024
 (1009323/4231403)*100
 ```
+
 ```{r}
-#For Republicans 2022 (according to "total")
-(998905/4161637)*100
+# % of registered voters that were Republicans in 2022
+(998905/4161637)*100 
 ```
 
 ```{r}
-# % change Republicans
-(1009323/998905)*100
+# Percent change of # of Republican voters 
+((1009323-998905)/998905)*100 
 ```
+
+```{r}
+# % of registered voters that were unaffiliated in 2024
+(923927/4231403)*100
+```
+```{r}
+# % of registered voters that were unaffiliated in 2022
+(841573/4161637)*100
+```
+```{r}
+# Percent change of # of unafiliated voters 
+((923927-841573)/841573)*100
+```
+
 
 Q2. Among the Maryland jurisdictions with the most registered voters, which one had the biggest percentage increase in unaffiliated voters between 2022 and 2024? How did that county vote for governor in 2022 and for president in 2020? Contrast the partisan percentages of that county with the county that had the eighth-largest percentage increase in unaffiliated voters. You should display information from the data that shows the counties with the largest percentage increase first.
 
 A2.
+Prince George's County had the largest percent increase in unaffiliated voters between 2022 and 2024. The county voted for Moore in 2022 and Biden in 2020. Frederick County had the 8th-largest percent increase in unaffiliated voters between 2022 and 2024. The county voted for Moore in 2022 and Biden in 2020. 
 
 ```{r}
+party_registrations_2022B <- party_registrations_2022|>
+    rename("DEM2022"= "DEM")|>
+    rename("REP2022" = "REP")|>
+    rename("GRN2022" = "GRN")|>
+    rename("LIB2022" = "LIB")|>
+    rename("WCP2022" = "WCP")|>
+    rename("UNAF2022" = "UNAF")|>
+    rename("OTH2022" = "OTH")|>
+    rename("TOTAL2022" = "TOTAL")
+  
+all_party_registrations <- party_registrations_2022B |> left_join(party_registrations_2024, join_by(COUNTY))
 
+all_party_registrations |>
+  mutate(CHANGE = ((UNAF-UNAF2022)/UNAF2022)*100)|>
+  arrange(desc(CHANGE))
 ```
 
 Q3. Do the party percentages of new registrants (% Dem, % Rep, % Unaffiliated) from September 2024 and September 2022 match the overall percentage of partisan registration in the state at those times?
