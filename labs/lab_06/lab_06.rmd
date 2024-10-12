@@ -123,8 +123,8 @@ changes_2022 <-changes_2022|>
 
 ```{r}
 # Current registrations
-fullsecondpage_2022 <- read_csv("fullsecondpage_2022.csv")
-changes_2022 <- fullsecondpage_2022 |>
+party_registrations_2022 <- read_csv("fullsecondpage_2022.csv")
+party_registrations_2022 <- party_registrations_2022 |>
     rename(COUNTY = ...1)|>
     rename(DEM = DEM...12)|>
     rename(REP = REP...13)|>
@@ -141,10 +141,35 @@ changes_2022 <- fullsecondpage_2022 |>
 
 Q1. Calculate the percentage of registered Democrats, Republicans and unaffiliated voters for the entire state in September 2024 and September 2022, and then calculate the percentage change for those three party categories (the formula for percentage change is easy to remember: (New-Old)/Old). How would you describe the changes in these partisan categories in a story? What's the most interesting thing about these changes that would be the lede of that story?
 
-A1.
+A1.54% of registered voters were Democrats in 2022 and 52% were Democrats in 2024. This was over a 1 percent decrease in overall registered Democrats. In 2024, 23% of registered voters were Republicans, a decrease from 24% in 2022. 
+#For Democrats 2024 (according to "total")
+(2219417/4231403)*100
+```
+```{r}
+#For Democrats 2022 (according to "total")
+(2250961/4161637)*100
+```
 
 ```{r}
+#Democrat percent change raw # of registered voters
+((2219417 - 2250961)/2250961)*100
+#Democrat percent change of proportion of registered voters
+((52.45109 - 54.08836)/54.08836)*100
 
+```
+
+```{r}
+#For Republicans 2024 (according to "total")
+(1009323/4231403)*100
+```
+```{r}
+#For Republicans 2022 (according to "total")
+(998905/4161637)*100
+```
+
+```{r}
+# % change Republicans
+(1009323/998905)*100
 ```
 
 Q2. Among the Maryland jurisdictions with the most registered voters, which one had the biggest percentage increase in unaffiliated voters between 2022 and 2024? How did that county vote for governor in 2022 and for president in 2020? Contrast the partisan percentages of that county with the county that had the eighth-largest percentage increase in unaffiliated voters. You should display information from the data that shows the counties with the largest percentage increase first.
