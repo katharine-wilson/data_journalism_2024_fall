@@ -217,19 +217,55 @@ Q3. Do the party percentages of new registrants (% Dem, % Rep, % Unaffiliated) f
 In other words, did new registrants mirror the overall partisan composition of the electorate, or were they different? Do any of the methods of registration vary significantly from the overall partisan pattern? Which method is worthy of further exploration?
 
 A3.
-
+The percentages of new registrants and overall people registered to each party were very different. There was a greater proportion of Republicans and Democrats than the overall proportion that party had of total registered voters. There was a larger percent of new unaffiliated voters than overall unaffiliated voters. Most of the new registrations are from the Motor Vehicle Administration. The registrations were consistant with the new partisan patterns, but not with the overall party affiliation totals. For the methods, more people were registering as unaffiliated than Republicans. 
 ```{r}
-
+#Democrats 2024 (A: 49.85%) Overall composition: 52.45
+(19077/38265)*100
+```
+```{r}
+#Democrats 2022 (A:51.68) Overall composition: 54.08
+(19428/37623)*100
+```
+```{r}
+#Republicans 2024(A:18.23) Overall composition: 23.85
+(6977/38265)*100
+```
+```{r}
+#Republicans 2022(A:15.04) Overall composition: 24.00
+(5661/37623)*100
+```
+```{r}
+#Unaffiliated 2024 (A:28.68) Overall composition: 21.83
+(10975/38265)*100
+```
+```{r}
+#Unaffiliated 2022 (A: 30.60) Overall composition: 20.22
+(11513/37623)*100
 ```
 
 Q4. Choose your own adventure! Using both the 2024 and 2022 data for one of the dataframes (changes, removals or new registrations), ask and answer a question that makes at least one comparison and requires code to answer. That could involve calculating a percentage, percentage change or the raw difference between two columns.
 
-A4.
-
+A4.What was the most popular method of voter registration among new unaffiliated voters in 2022 and 2024? What percent of new unaffiliated voters registered this way each year?
+For both years, the most popular method to register new unaffiliated voters was the Motor Vehicle Administration. In 2022, 70.28% of new unaffiliated voters came from the MVA. In 2024, that percentage decreased to 53.46%.  
 ```{r}
-
+new_reg_party_2022|>
+  arrange(desc(UNAF))
 ```
+```{r}
+new_reg_party_2024|>
+  arrange(desc(UNAF))
+```
+```{r}
+#2022
+(8092/11513)*100
+```
+```{r}
+#2024
+(5868/10975)*100
+```
+
+
 
 Q5. What's the best story idea or question you've seen as a result of the work you've done in this lab?
 
-A5.
+A5.Why are more Maryland voters registering as unaffiliated since 2022?
