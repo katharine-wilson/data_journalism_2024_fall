@@ -1,0 +1,4 @@
+This is my notebook for the Alosbrooks/Hogan FEC data released Oct 15 2024
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
