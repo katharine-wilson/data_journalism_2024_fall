@@ -228,7 +228,7 @@ Note that the year is 2019, which is the latest year that we have data from ever
 Of the 20 zip codes with the largest amounts, which ones have estimated median household incomes of less than \$50,000?
 
 **Answer**
-
+21202 
 ```{r}
 md_zipcodes <- get_acs(geography="zcta", variables = "B19013_001", state='MD', year=2019)
 md_zips_with_acs <- top_zips |> left_join(md_zipcodes, join_by(zip5==GEOID))
@@ -236,3 +236,9 @@ md_zips_with_acs <- md_zips_with_acs |> mutate(min=(estimate-moe), max=(estimate
 ```
 
 **Task** Arrange md_zips_with_acs by estimate showing the highest median household income first. What questions do you have about these top zip codes? **Answer**
+What political party are candidates in who are donated to the most by these zip codes? What is the most popular type of job people in these zip codes have? What county are these zip codes in? 
+```{r}
+md_zips_with_acs |>
+arrange(desc(estimate))
+```
+
