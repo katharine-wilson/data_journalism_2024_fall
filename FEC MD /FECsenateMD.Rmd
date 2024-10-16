@@ -1,4 +1,96 @@
-This is my notebook for the Alosbrooks/Hogan FEC data released Oct 15 2024
+This is my notebook for the Alsobrooks/Hogan FEC data released Oct 15 2024
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse
+library(tidyverse)
+```
+xxx 
+```{r}
+md_voters_for_match<-md_voters_for_match|>
+mutate(ResidentialZip = as.character(ResidentialZip))
+glimpse(md_voters_for_match)
+```
+```{r}
+DelaneyQ3Contribs<-DelaneyQ3Contribs|>
+mutate(first_name = toupper(first_name))|>
+mutate(last_name = toupper(last_name))
+```
+
+xxx
+
+```{r}
+delaney_contribs_and_voters <- md_voters_for_match |> inner_join(DelaneyQ3Contribs, join_by(FirstName == first_name, LastName == last_name, ResidentialZip == zip_code))
+glimpse(delaney_contribs_and_voters)
+```
+```{r}
+delaney_contribs_and_voters |>
+  group_by(VTR_ID)|> 
+  arrange(desc(amount))
+```
+```{r}
+delaney_contribs_and_voters |>
+  group_by(ResidentialZip) |> 
+  summarise(
+    count=n()) |>
+  arrange(desc(count))
+```
+
+
+
+HOGAN---------------------------
+Joining voter file and Q3 Hogan 
+```{r}
+hogan_contribs_and_voters <- md_voters_for_match |> inner_join(HoganQ3Contribs, join_by(FirstName == first_name, LastName == last_name, ResidentialZip == zip, ))
+glimpse(hogan_contribs_and_voters)
+```
+
+Grouping by donor 
+```{r}
+hogan_contribs_by_voter <- hogan_contribs_and_voters |>
+  group_by(VTR_ID)|> 
+  arrange(desc(amount))
+```
+
+Grouping by party 
+```{r}
+hogan_contribs_by_voter |>
+  group_by(Party) |> 
+  summarise(
+    count=n_distinct(VTR_ID)
+  ) |>
+  arrange(desc(count))
+```
+Alsobrooks ----------------------
+correcting capitalization 
+```{r}
+AlsobrooksQ3Contribs<-AlsobrooksQ3Contribs|>
+mutate(first_name = toupper(first_name))|>
+mutate(last_name = toupper(last_name))
+```
+Joining voter file and Q3 Alsobrooks 
+```{r}
+alsobrooks_contribs_and_voters <- md_voters_for_match |> inner_join(AlsobrooksQ3Contribs, join_by(FirstName == first_name, LastName == last_name, ResidentialZip == zip, ))
+glimpse(alsobrooks_contribs_and_voters)
+```
+```{r}
+alsobrooks_contribs_by_voter <- alsobrooks_contribs_and_voters |>
+  group_by(VTR_ID)|> 
+  arrange(desc(amount))
+```
+
+```{r}
+alsobrooks_contribs_by_voter |>
+  group_by(Party) |> 
+  summarise(
+    count=n_distinct(VTR_ID)
+  ) |>
+  arrange(desc(count))
+```
+

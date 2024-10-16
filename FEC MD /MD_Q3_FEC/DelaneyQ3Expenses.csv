@@ -1,0 +1,173 @@
+linenumber,fec_committee_id,transaction_id,entity_type,organization_name,last_name,first_name,middle_name,prefix,suffix,street_1,street_2,city,state,zip_code,election_code,date,amount,purpose,memo_code,memo_text,cycle
+SB17,C00854471,500702826,ORG,SKDKnickerbocker LLC,,,,,,285 Fulton St,Fl 69,New York,NY,100070166,,2024-08-28,55676.0,Media Buy,,,2024
+SB21,C00854471,500688607,ORG,Maryland Democratic Party,,,,,,275 West St,Ste 70,Annapolis,MD,214013464,,2024-07-31,50000.0,Unlimited Transfer,,,2024
+SB17,C00854471,500708562,ORG,SKDKnickerbocker LLC,,,,,,285 Fulton St,Fl 69,New York,NY,100070166,,2024-09-06,41640.29,Media Buy,,,2024
+SB21,C00854471,500708559,ORG,Maryland Democratic Party,,,,,,275 West St,Ste 70,Annapolis,MD,214013464,,2024-09-06,39000.0,Unlimited Transfer,,,2024
+SB17,C00854471,500708564,ORG,SKDKnickerbocker LLC,,,,,,285 Fulton St,Fl 69,New York,NY,100070166,,2024-09-17,34112.43,Media Buy,,,2024
+SB17,C00854471,500708565,ORG,SKDKnickerbocker LLC,,,,,,285 Fulton St,Fl 69,New York,NY,100070166,,2024-09-23,34112.43,Media Buy,,,2024
+SB17,C00854471,500708563,ORG,SKDKnickerbocker LLC,,,,,,285 Fulton St,Fl 69,New York,NY,100070166,,2024-09-11,34112.43,Media Buy,,,2024
+SB17,C00854471,500689182,ORG,Hart Research,,,,,,1250 Connecticut Ave NW,Ste 530,Washington,DC,200362603,,2024-07-16,34000.0,Polling Services,,,2024
+SB21,C00854471,500708560,ORG,Maryland Democratic Party,,,,,,275 West St,Ste 70,Annapolis,MD,214013464,,2024-09-24,21000.0,Unlimited Transfer,,,2024
+SB17,C00854471,500689408,ORG,The Frost Group,,,,,,660 Pennsylvania Ave SE,Ste 202,Washington,DC,200034357,,2024-08-02,12000.0,Fundraising Consulting Services,,,2024
+SB17,C00854471,500675935,ORG,The Frost Group,,,,,,660 Pennsylvania Ave SE,Ste 202,Washington,DC,200034357,,2024-07-16,12000.0,Fundraising Consulting Services,,,2024
+SB17,C00854471,500702825,ORG,SKDKnickerbocker LLC,,,,,,285 Fulton St,Fl 69,New York,NY,100070166,,2024-08-28,10125.57,Media Buy,,,2024
+SB17,C00854471,500689228,ORG,Blueprint Interactive,,,,,,1220 19Th St NW,,Washington,DC,200362405,,2024-08-02,9500.0,Digital Persuasion,,,2024
+SB17,C00854471,500689208,ORG,Paychex,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-08-14,9166.89,Payroll Taxes,,,2024
+SB17,C00854471,500702815,ORG,Paychex,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-08-29,8337.61,Payroll Taxes,,,2024
+SB17,C00854471,500689206,ORG,Paychex,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-07-30,7663.69,Payroll Tax,,,2024
+SB17,C00854471,500708420,ORG,Paychex,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-09-12,7579.62,Payroll Taxes,,,2024
+SB17,C00854471,500708421,ORG,Paychex,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-09-27,7554.88,Payroll Taxes,,,2024
+SB17,C00854471,500689245,ORG,Mark Weiss Associates,,,,,,4710 Bethesda Ave,,Bethesda,MD,208145213,,2024-07-16,7030.66,Printing,,,2024
+SB17,C00854471,500689184,ORG,High Ground Strategies,,,,,,2807 Washington Blvd,,Baltimore,MD,212301440,,2024-07-19,6700.0,Door-to-Door Get-Out-the-Vote Services,,,2024
+SB17,C00854471,500702803,ORG,Mark Weiss Associates,,,,,,4710 Bethesda Ave,,Bethesda,MD,208145213,,2024-08-23,5565.08,Printing,,,2024
+SB17,C00854471,500689205,ORG,Paychex,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-07-12,5460.09,Payroll Tax,,,2024
+SB17,C00854471,500689219,ORG,The Pivot Group,,,,,,712 H St NE,# 606,Washington,DC,200023627,,2024-07-16,5273.5,Media Production Services,,,2024
+SB17,C00854471,500689213,ORG,"PCMS, LLC",,,,,,910 17Th St NW,Ste 1050,Washington,DC,200062623,,2024-08-02,5005.11,Accounting Services,,,2024
+SB17,C00854471,500689212,ORG,"PCMS, LLC",,,,,,910 17Th St NW,Ste 1050,Washington,DC,200062623,,2024-07-19,5003.13,Accounting Services,,,2024
+SB17,C00854471,500702786,ORG,Guardian Realty Management,,,,,,6000 Executive Blvd,Ste 400,North Bethesda,MD,208523857,,2024-08-30,3851.48,Rent,,,2024
+SB17,C00854471,500689259,ORG,Perry Parkway Associates LP,,,,,,6000 Executive Blvd,Ste 400,Rockville,MD,208523857,,2024-07-31,3681.5,Rent,,,2024
+SB17,C00854471,500708424,ORG,Perry Parkway Associates LP,,,,,,6000 Executive Blvd,Ste 400,Rockville,MD,208523857,,2024-09-24,3620.0,Rent,,,2024
+SB17,C00854471,500703200,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-09-30,3533.17,Credit Card Processing Fee,,,2024
+SB17,C00854471,500689241,ORG,Guardian Realty Management,,,,,,6000 Executive Blvd,Ste 400,North Bethesda,MD,208523857,,2024-07-23,3500.0,Office Deposit,,,2024
+SB17,C00854471,500708574,IND,,London,Nick,,,,223 W 29Th St,# 1,Baltimore,MD,212112905,,2024-07-30,3495.06,Payroll,,,2024
+SB17,C00854471,500708575,IND,,London,Nick,,,,223 W 29Th St,# 1,Baltimore,MD,212112905,,2024-08-14,3495.06,Payroll,,,2024
+SB17,C00854471,500708573,IND,,London,Nick,,,,223 W 29Th St,# 1,Baltimore,MD,212112905,,2024-07-12,3495.06,Payroll,,,2024
+SB17,C00854471,500708418,IND,,London,Nick,,,,223 W 29Th St,# 1,Baltimore,MD,212112905,,2024-09-27,3495.06,Payroll,,,2024
+SB17,C00854471,500708417,IND,,London,Nick,,,,223 W 29Th St,# 1,Baltimore,MD,212112905,,2024-09-12,3495.06,Payroll,,,2024
+SB17,C00854471,500708576,IND,,London,Nick,,,,223 W 29Th St,# 1,Baltimore,MD,212112905,,2024-08-29,3495.06,Payroll,,,2024
+SB17,C00854471,500689175,IND,,Flannery,Cynthia,,,,4105 Bradley Ln,,Chevy Chase,MD,208155236,,2024-08-14,3466.64,Payroll,,,2024
+SB17,C00854471,500702792,ORG,High Ground Strategies,,,,,,2807 Washington Blvd,,Baltimore,MD,212301440,,2024-08-23,3350.0,Door-to-Door Get-Out-the-Vote Services,,,2024
+SB20A,C00854471,500675688,IND,,Lennon,Daniel,,,,100 Captains Pl,,Naples,FL,341027702,,2024-07-15,3300.0,Refund of 6/24 Contribution,,,2024
+SB20A,C00854471,500686632,IND,,Snedden,Kim,,,,2309 Chain Bridge Rd NW,,Washington,DC,200163301,,2024-08-12,3300.0,Refund of 8/5 Contribution,,,2024
+SB17,C00854471,500708434,IND,,Hood,Susan,Kenedy,,,10150 Point Clear Ct,,New Market,MD,217746442,,2024-09-27,3234.66,Payroll,,,2024
+SB17,C00854471,500702828,IND,,Hood,Susan,Kenedy,,,10150 Point Clear Ct,,New Market,MD,217746442,,2024-08-29,3234.66,Payroll,,,2024
+SB17,C00854471,500689218,IND,,Hood,Susan,Kenedy,,,10150 Point Clear Ct,,New Market,MD,217746442,,2024-08-14,3234.66,Payroll,,,2024
+SB17,C00854471,500689217,IND,,Hood,Susan,Kenedy,,,10150 Point Clear Ct,,New Market,MD,217746442,,2024-07-30,3234.66,Payroll,,,2024
+SB17,C00854471,500689216,IND,,Hood,Susan,Kenedy,,,10150 Point Clear Ct,,New Market,MD,217746442,,2024-07-12,3234.66,Payroll,,,2024
+SB17,C00854471,500708433,IND,,Hood,Susan,Kenedy,,,10150 Point Clear Ct,,New Market,MD,217746442,,2024-09-12,3234.66,Payroll,,,2024
+SB17,C00854471,500689172,IND,,Dunn,Chandler,,,,915 L St NW,Apt 1109,Washington,DC,200015431,,2024-08-14,2821.38,Payroll,,,2024
+SB17,C00854471,500704934,IND,,Dunn,Chandler,,,,915 L St NW,Apt 1109,Washington,DC,200015431,,2024-09-27,2821.38,Payroll,,,2024
+SB17,C00854471,500704933,IND,,Dunn,Chandler,,,,915 L St NW,Apt 1109,Washington,DC,200015431,,2024-09-12,2821.38,Payroll,,,2024
+SB17,C00854471,500702775,IND,,Dunn,Chandler,,,,915 L St NW,Apt 1109,Washington,DC,200015431,,2024-08-29,2821.38,Payroll,,,2024
+SB17,C00854471,500689171,IND,,Dunn,Chandler,,,,915 L St NW,Apt 1109,Washington,DC,200015431,,2024-07-30,2821.38,Payroll,,,2024
+SB17,C00854471,500689170,IND,,Dunn,Chandler,,,,915 L St NW,Apt 1109,Washington,DC,200015431,,2024-07-12,2821.38,Payroll,,,2024
+SB17,C00854471,500702783,IND,,Carillo,Diana,,,,12 Valleyside Ct,,Germantown,MD,208741557,,2024-08-29,2626.91,Payroll,,,2024
+SB17,C00854471,500708403,IND,,Carillo,Diana,,,,12 Valleyside Ct,,Germantown,MD,208741557,,2024-09-27,2626.91,Payroll,,,2024
+SB17,C00854471,500708425,IND,,George,Sanjay,,,,8511 Coltrane Ct,,Ellicott City,MD,210435130,,2024-09-12,2626.91,Payroll,,,2024
+SB17,C00854471,500689251,IND,,George,Sanjay,,,,8511 Coltrane Ct,,Ellicott City,MD,210435130,,2024-08-18,2626.91,Payroll,,,2024
+SB17,C00854471,500689250,IND,,George,Sanjay,,,,8511 Coltrane Ct,,Ellicott City,MD,210435130,,2024-07-30,2626.9,Payroll,,,2024
+SB17,C00854471,500708401,IND,,Carillo,Diana,,,,12 Valleyside Ct,,Germantown,MD,208741557,,2024-09-12,2626.9,Payroll,,,2024
+SB17,C00854471,500708426,IND,,George,Sanjay,,,,8511 Coltrane Ct,,Ellicott City,MD,210435130,,2024-09-27,2626.9,Payroll,,,2024
+SB17,C00854471,500702820,IND,,George,Sanjay,,,,8511 Coltrane Ct,,Ellicott City,MD,210435130,,2024-08-29,2626.9,Payroll,,,2024
+SB17,C00854471,500689232,IND,,Carillo,Diana,,,,12 Valleyside Ct,,Germantown,MD,208741557,,2024-08-14,2626.9,Payroll,,,2024
+SB17,C00854471,500689231,IND,,Carillo,Diana,,,,12 Valleyside Ct,,Germantown,MD,208741557,,2024-07-30,2553.42,Payroll,,,2024
+SB17,C00854471,500708569,ORG,"Slater And Slater, PC",,,,,,129 W Patrick St,Ste 9,Frederick,MD,217015682,,2024-09-25,2400.0,Rent,,,2024
+SB17,C00854471,500702781,IND,,Flannery,Cynthia,,,,4105 Bradley Ln,,Chevy Chase,MD,208155236,,2024-08-29,2346.27,Payroll,,,2024
+SB17,C00854471,500704938,IND,,Flannery,Cynthia,,,,4105 Bradley Ln,,Chevy Chase,MD,208155236,,2024-09-27,2346.27,Payroll,,,2024
+SB17,C00854471,500704937,IND,,Flannery,Cynthia,,,,4105 Bradley Ln,,Chevy Chase,MD,208155236,,2024-09-12,2346.27,Payroll,,,2024
+SB17,C00854471,500689185,IND,,Funderburk,John,,,,3014 Mill Island Pkwy,,Frederick,MD,217016815,,2024-08-02,2000.0,Door-to-Door Get-Out-the-Vote Services,,,2024
+SB17,C00854471,500704939,ORG,Conceptual Beauty,,,,,,1400 Irving St NW,,Washington,DC,200102850,,2024-09-06,1966.5,Media Production Services,,,2024
+SB17,C00854471,500689254,ORG,Sheraton Grand Chicago,,,,,,301 E North Water St,,Chicago,IL,606114534,,2024-08-08,1638.92,Travel Expense,,,2024
+SB17,C00854471,500689215,ORG,Suchy Design LLC,,,,,,3112 Jessie Ct,,Fairfax,VA,220302115,,2024-07-16,1600.0,Graphic Design Services,,,2024
+SB17,C00854471,500689192,IND,,Grammer,Joshua,,,,9122 Baltimore Ave,Apt 3047,College Park,MD,207401374,,2024-07-12,1576.34,Payroll,,,2024
+SB17,C00854471,500689194,IND,,Grammer,Joshua,,,,9122 Baltimore Ave,Apt 3047,College Park,MD,207401374,,2024-08-14,1576.34,Payroll,,,2024
+SB17,C00854471,500702795,IND,,Grammer,Joshua,,,,9122 Baltimore Ave,Apt 3047,College Park,MD,207401374,,2024-08-29,1576.34,Payroll,,,2024
+SB17,C00854471,500689193,IND,,Grammer,Joshua,,,,9122 Baltimore Ave,Apt 3047,College Park,MD,207401374,,2024-07-30,1576.34,Payroll,,,2024
+SB17,C00854471,500703199,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-09-23,1318.51,Credit Card Processing Fee,,,2024
+SB17,C00854471,500689237,ORG,Green Plate LLC,,,,,,11307 Elkin St,,Silver Spring,MD,209024609,,2024-08-02,1293.44,Event Catering,,,2024
+SB17,C00854471,500702798,ORG,Lowe's,,,,,,5611 Buckeystown Pike,,Frederick,MD,217048311,,2024-08-21,1235.21,Office Supplies,,,2024
+SB17,C00854471,500683391,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-07-08,1125.01,Credit Card Processing Fee,,,2024
+SB17,C00854471,500703201,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-09-30,1086.66,Credit Card Processing Fee,,,2024
+SB17,C00854471,500686630,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-07-29,1085.48,Credit Card Processing Fee,,,2024
+SB17,C00854471,500689236,ORG,Global Industrial,,,,,,11 Harbor Park Dr,,Port Washington,NY,110504656,,2024-08-02,1032.39,Office Supplies,,,2024
+SB17,C00854471,500689199,ORG,"NGP VAN, Inc",,,,,,655 15Th St NW,Ste 650,Washington,DC,200055738,,2024-07-16,1022.9,Software,,,2024
+SB17,C00854471,500689200,ORG,"NGP VAN, Inc",,,,,,655 15Th St NW,Ste 650,Washington,DC,200055738,,2024-08-06,1022.9,Software,,,2024
+SB21,C00854471,500702838,ORG,WCDCC,,,,,,PO Box 1136,,Hagerstown,MD,217411136,,2024-08-30,1000.0,Donation,,,2024
+SB17,C00854471,500708557,ORG,Comcast,,,,,,1701 John F Kennedy Blvd,,Philadelphia,PA,191032833,,2024-09-23,948.51,Internet Services,,,2024
+SB17,C00854471,500689424,ORG,1310 Kitchen & Bar,,,,,,1310 Wisconsin Ave NW,,Washington,DC,200073310,,2024-07-16,948.0,Event Catering,X,*,2024
+SB17,C00854471,500689248,ORG,NFP,,,,,,6500 Rock Spring Dr,Ste 500,Bethesda,MD,208171149,,2024-07-31,926.67,Insurance,,,2024
+SB17,C00854471,500689187,IND,,Taveras,Jose,,,,16300 Old Emmitsburg Rd,Ste 1,Emmitsburg,MD,217277703,,2024-07-12,901.31,Payroll,,,2024
+SB17,C00854471,500686631,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-08-05,836.74,Credit Card Processing Fee,,,2024
+SB17,C00854471,500702809,ORG,Metrologo LLC,,,,,,7135 Wisconsin Ave,,Bethesda,MD,208144801,,2024-08-30,815.27,Printing,,,2024
+SB17,C00854471,500689214,ORG,"Slater And Slater, PC",,,,,,129 W Patrick St,Ste 9,Frederick,MD,217015682,,2024-07-10,800.0,Rent,,,2024
+SB17,C00854471,500683392,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-07-15,728.21,Credit Card Processing Fee,,,2024
+SB17,C00854471,500709069,ORG,Arent Fox Schiff,,,,,,1717 K St NW,,Washington,DC,200065343,,2024-07-16,718.1,Legal Services,,,2024
+SB17,C00854471,500689253,ORG,Savage River Lodge,,,,,,1600 Mount Aetna Rd,,Frostburg,MD,215323817,,2024-08-02,665.5,Travel Expenses,,,2024
+SB17,C00854471,500688608,IND,,Hood,Susan,Kenedy,,,10150 Point Clear Ct,,New Market,MD,217746442,,2024-07-16,655.64,Mileage Reimbursement,,,2024
+SB17,C00854471,500689249,ORG,NFP,,,,,,6500 Rock Spring Dr,Ste 500,Bethesda,MD,208171149,,2024-08-01,609.95,Insurance,,,2024
+SB17,C00854471,500689188,IND,,Taveras,Jose,,,,16300 Old Emmitsburg Rd,Ste 1,Emmitsburg,MD,217277703,,2024-07-30,514.08,Payroll,,,2024
+SB17,C00854471,500698489,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-09-02,502.54,Credit Card Processing Fee,,,2024
+SB21,C00854471,500708415,ORG,Latino Dems Middletown,,,,,,PO Box 30760,,Bethesda,MD,208240760,,2024-09-18,500.0,Donations,,,2024
+SB17,C00854471,500696110,IND,,Pokharel,Nicole,,,,19913 Knollcross Dr,,Germantown,MD,208766351,,2024-09-06,500.0,Intern Stipend,,,2024
+SB17,C00854471,500696109,IND,,Ding,Olivia,,,,12624 Piedmont Trail Rd,,Clarksburg,MD,208714303,,2024-09-06,500.0,Intern Stipend,,,2024
+SB17,C00854471,500689164,ORG,Amazon,,,,,,410 Terry Ave N,,Seattle,WA,981095210,,2024-08-05,498.77,Office Supplies,,,2024
+SB17,C00854471,500698491,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-09-16,470.74,Credit Card Processing Fee,,,2024
+SB17,C00854471,500689189,IND,,Taveras,Jose,,,,16300 Old Emmitsburg Rd,Ste 1,Emmitsburg,MD,217277703,,2024-08-14,440.64,Payroll,,,2024
+SB17,C00854471,500689418,ORG,Balducci's,,,,,,10323 Old Georgetown Rd,,Bethesda,MD,208141903,,2024-07-16,386.87,Event Catering,X,*,2024
+SB17,C00854471,500708427,ORG,Switchboard,,,,,,PO Box 33485,,Washington,DC,200330485,,2024-09-12,378.06,Texting Services,,,2024
+SB17,C00854471,500698488,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-08-26,360.83,Credit Card Processing Fee,,,2024
+SB17,C00854471,500698490,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-09-09,360.81,Credit Card Processing Fee,,,2024
+SB17,C00854471,500708430,ORG,Wegman's,,,,,,1500 Brooks Ave,,Rochester,NY,146243512,,2024-09-05,355.54,Fundraising Event Supplies,,,2024
+SB17,C00854471,500702770,ORG,American Airlines,,,,,,1 Skyview Dr,,Fort Worth,TX,761551801,,2024-08-21,325.47,Travel Expenses,,,2024
+SB17,C00854471,500689178,ORG,Elias Law Group,,,,,,250 Massachusetts Ave NW,Ste 400,Washington,DC,200015825,,2024-07-19,319.6,Legal Services,,,2024
+SB17,C00854471,500689246,ORG,Mavis Ellicott City,,,,,,8815 Baltimore National Pike,,Ellicott City,MD,210434154,,2024-07-18,316.36,Travel Expenses,,,2024
+SB17,C00854471,500689421,ORG,Burkas Fine Wine,,,,,,3414 Wisconsin Ave NW,,Washington,DC,200163009,,2024-07-16,314.08,Event Catering,X,*,2024
+SB17,C00854471,500689167,ORG,American Airlines,,,,,,1 Skyview Dr,,Fort Worth,TX,761551801,,2024-08-13,306.56,Travel Expenses,,,2024
+SB17,C00854471,500705779,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-09-30,301.23,Credit Card Processing Fee,,,2024
+SB17,C00854471,500689423,ORG,Schneider's,,,,,,300 Massachusetts Ave NE,,Washington,DC,200025702,,2024-07-16,296.46,Event Catering,X,*,2024
+SB17,C00854471,500698487,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-08-19,294.07,Credit Card Processing Fee,,,2024
+SB17,C00854471,500689227,ORG,Barking Mad Cafe,,,,,,239 Spectrum Ave,,Gaithersburg,MD,208793472,,2024-07-01,279.84,Event Catering,,,2024
+SB17,C00854471,500689252,ORG,Savage River Lodge,,,,,,1600 Mount Aetna Rd,,Frostburg,MD,215323817,,2024-07-30,275.0,Travel Expenses,,,2024
+SB17,C00854471,500689221,ORG,USPS,,,,,,475 Lenfant Plz SW,,Washington,DC,202600004,,2024-07-26,266.0,Shipping,,,2024
+SB17,C00854471,500689220,ORG,United Airlines,,,,,,233 S Wacker Dr,,Chicago,IL,606067147,,2024-08-14,265.48,Travel Expenses,,,2024
+SB17,C00854471,500708411,ORG,Hampton Inn,,,,,,7930 Jones Branch Dr,Ste 1100,Mclean,VA,221023313,,2024-09-30,243.96,Travel Expenses,,,2024
+SB17,C00854471,500708413,ORG,Hampton Inn,,,,,,7930 Jones Branch Dr,Ste 1100,Mclean,VA,221023313,,2024-09-30,243.96,Travel Expenses,,,2024
+SB17,C00854471,500690200,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-08-22,234.77,Credit Card Processing Fee,,,2024
+SB17,C00854471,500689256,ORG,U-Haul,,,,,,PO Box 21502,,Phoenix,AZ,850361502,,2024-08-02,227.77,Travel Expenses,,,2024
+SB17,C00854471,500689244,ORG,Halal Guys,,,,,,1331 Connecticut Ave NW,,Washington,DC,200361801,,2024-07-24,222.38,Catering,,,2024
+SB21,C00854471,500708432,ORG,WCDCC,,,,,,PO Box 1136,,Hagerstown,MD,217411136,,2024-09-03,200.0,Donation,,,2024
+SB17,C00854471,500702834,ORG,U-Haul,,,,,,PO Box 21502,,Phoenix,AZ,850361502,,2024-08-22,188.03,Travel Expenses,,,2024
+SB17,C00854471,500688386,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-08-15,165.0,Credit Card Processing Fee,,,2024
+SB17,C00854471,500708409,ORG,Google GSuite,,,,,,1600 Amphitheatre Pkwy,,Mountain View,CA,940431351,,2024-09-03,137.38,Software Services,,,2024
+SB17,C00854471,500702769,ORG,Amalgamated Bank,,,,,,1825 K St NW,,Washington,DC,200061202,,2024-08-29,132.25,Bank Fee,,,2024
+SB17,C00854471,500689181,ORG,Google GSuite,,,,,,1600 Amphitheatre Pkwy,,Mountain View,CA,940431351,,2024-08-02,123.07,Software,,,2024
+SB17,C00854471,500689257,ORG,U-Haul,,,,,,PO Box 21502,,Phoenix,AZ,850361502,,2024-08-02,119.03,Travel Expenses,,,2024
+SB17,C00854471,500702830,ORG,Switchboard,,,,,,PO Box 33485,,Washington,DC,200330485,,2024-08-23,115.69,Texting Services,,,2024
+SB17,C00854471,500689419,ORG,The Frost Group,,,,,,660 Pennsylvania Ave SE,Ste 202,Washington,DC,200034357,,2024-07-16,113.97,Shipping & Catering Reimbursement,,,2024
+SB17,C00854471,500689197,ORG,Namebadges.Com,,,,,,1544 N 8Th St,,Manitowoc,WI,542201902,,2024-08-02,111.35,Printing,,,2024
+SB17,C00854471,500683393,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-07-22,105.7,Credit Card Processing Fee,,,2024
+SB17,C00854471,500688605,ORG,Actblue Technical Services,,,,,,366 Summer St,,Somerville,MA,021443132,,2024-08-12,105.05,Credit Card Processing Fee,,,2024
+SB17,C00854471,500689180,ORG,Google GSuite,,,,,,1600 Amphitheatre Pkwy,,Mountain View,CA,940431351,,2024-07-02,103.54,Software,,,2024
+SB17,C00854471,500683406,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-07-25,101.25,Credit Card Processing Fee,,,2024
+SB17,C00854471,500689417,ORG,USPS,,,,,,475 Lenfant Plz SW,,Washington,DC,202600004,,2024-07-16,99.54,Shipping,X,*,2024
+SB17,C00854471,500702822,ORG,Sheraton Grand Chicago,,,,,,301 E North Water St,,Chicago,IL,606114534,,2024-08-23,90.0,Travel Expense,,,2024
+SB17,C00854471,500689165,ORG,Amazon,,,,,,410 Terry Ave N,,Seattle,WA,981095210,,2024-08-08,88.0,Office Supplies,,,2024
+SB17,C00854471,500704932,ORG,Amalgamated Bank,,,,,,1825 K St NW,,Washington,DC,200061202,,2024-09-26,80.75,Bank Fees,,,2024
+SB17,C00854471,500689207,ORG,Paychex,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-08-12,80.57,Payroll Fee,,,2024
+SB17,C00854471,500689163,ORG,Amalgamated Bank,,,,,,1825 K St NW,,Washington,DC,200061202,,2024-07-26,75.5,Bank Fee,,,2024
+SB17,C00854471,500708419,ORG,Paychex,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-09-10,72.51,Payroll Fee,,,2024
+SB17,C00854471,500689204,ORG,Paychex,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-07-10,64.88,Payroll Fee,,,2024
+SB17,C00854471,500708431,ORG,Wegman's,,,,,,1500 Brooks Ave,,Rochester,NY,146243512,,2024-09-16,61.53,Office Supplies,,,2024
+SB17,C00854471,500689425,ORG,The Frost Group,,,,,,660 Pennsylvania Ave SE,Ste 202,Washington,DC,200034357,,2024-07-19,56.34,Shipping & Catering Reimbursement,,,2024
+SB17,C00854471,500689211,ORG,Paychex Insurance Agency,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-08-15,51.37,Insurance,,,2024
+SB17,C00854471,6665146I,PAC,LEAGUE OF CONSERVATION VOTERS ACTION FUND,,,,,,740 15Th St NW,Fl 7,Washington,DC,200051048,,2024-07-16,50.0,Endorsement Related Expenses,,* In-Kind Received,2024
+SB17,C00854471,500698831,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-09-19,49.4,Credit Card Processing Fee,,,2024
+SB17,C00854471,500708422,ORG,Paychex Insurance Agency,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-09-13,40.28,Insurance,,,2024
+SB17,C00854471,500708423,ORG,Paychex Insurance Agency,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-09-30,40.28,Insurance,,,2024
+SB17,C00854471,500683407,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-07-11,39.8,Credit Card Processing Fee,,,2024
+SB17,C00854471,500702818,ORG,Paychex Insurance Agency,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-08-30,39.52,Insurance,,,2024
+SB17,C00854471,500689209,ORG,Paychex Insurance Agency,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-07-15,39.09,Insurance,,,2024
+SB17,C00854471,500689210,ORG,Paychex Insurance Agency,,,,,,6870 Shadowridge Dr,Ste 101,Orlando,FL,328129002,,2024-07-31,35.24,Insurance,,,2024
+SB17,C00854471,500693521,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-09-05,23.81,Credit Card Processing Fee,,,2024
+SB17,C00854471,500689166,ORG,Amazon,,,,,,410 Terry Ave N,,Seattle,WA,981095210,,2024-08-14,16.95,Office Supplies,,,2024
+SB17,C00854471,500703251,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-09-26,8.67,Credit Card Processing Fee,,,2024
+SB17,C00854471,500689226,ORG,West Patrick Street Parking Garage,,,,,,138 W Patrick St,,Frederick,MD,217015514,,2024-07-12,8.0,Travel,,,2024
+SB17,C00854471,500689415,ORG,The Frost Group,,,,,,660 Pennsylvania Ave SE,Ste 202,Washington,DC,200034357,,2024-07-16,7.42,Shipping & Catering Reimbursement,,,2024
+SB17,C00854471,500689224,ORG,West Patrick Street Parking Garage,,,,,,138 W Patrick St,,Frederick,MD,217015514,,2024-07-05,7.0,Travel,,,2024
+SB17,C00854471,500689225,ORG,West Patrick Street Parking Garage,,,,,,138 W Patrick St,,Frederick,MD,217015514,,2024-07-10,6.0,Travel,,,2024
+SB17,C00854471,500702837,ORG,West Patrick Street Parking Garage,,,,,,138 W Patrick St,,Frederick,MD,217015514,,2024-08-21,6.0,Travel,,,2024
+SB17,C00854471,500703248,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-09-23,3.96,Credit Card Processing Fee,,,2024
+SB17,C00854471,500683414,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-07-18,3.19,Credit Card Processing Fee,,,2024
+SB17,C00854471,500686635,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-08-01,1.39,Credit Card Processing Fee,,,2024
+SB17,C00854471,500698278,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-09-12,1.1,Credit Card Processing Fee,,,2024
+SB17,C00854471,500687535,PAC,"DEMOCRACY ENGINE, INC., PAC",,,,,,237 Florida Ave NW,,Washington,DC,200011801,,2024-08-08,0.1,Credit Card Processing Fee,,,2024
