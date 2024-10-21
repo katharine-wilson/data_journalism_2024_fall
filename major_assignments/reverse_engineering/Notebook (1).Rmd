@@ -175,7 +175,7 @@ real_non_voters_filtered <- real_non_voters |>
 
 
 ```{r}
-real_non_voters |>
+real_non_voters_filtered |>
   group_by(Q29_1)|>
   summarise(count=n())
 ```
