@@ -1,0 +1,27 @@
+This is my r file dealing with April McClain Delaney and Neil Parrott financial information from Q3. 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+
+```{r}
+DelaneyQ3Contribs <- read_csv("MD_Q3_FEC/DelaneyQ3Contribs.csv")
+DelaneyQ3Expenses <- read_csv("MD_Q3_FEC/DelaneyQ3Expenses.csv")
+ParrottQ3Contribs <- read_csv("MD_Q3_FEC/ParrottQ3Contribs.csv")
+ParrottQ3Expenses <- read_csv("MD_Q3_FEC/ParrottQ3Expenses.csv")
+```
+
+This quarter totals
+
+```{r}
+#Delaney contribs 
+DelaneyQ3Contribs|>
+  group_by(state)
+```
+
