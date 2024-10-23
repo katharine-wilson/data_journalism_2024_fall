@@ -148,6 +148,7 @@ Follow these steps:
 **A4.** 
 
 ```{r}
-
-  
+md_absentee_ballots |>
+  ggplot() + 
+  geom_point(aes(x=`TOTAL RECEIVED', Y= 'TOTAL SENT')
 ```
