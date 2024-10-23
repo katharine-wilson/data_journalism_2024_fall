@@ -106,10 +106,26 @@ md_recived_graph_party |>
 **A3** 
 
 ```{r}
-md_absentee_ballots_date|>
-  
-
+md_absentee_ballots_date_fred <- md_absentee_ballots_date|>
+  filter(`COUNTY NAME` == "FREDERICK")
 ```
+
+```{r}
+md_absentee_ballots_date_fred|>
+ggplot() + 
+  geom_line(aes(x=DATE, y=`DEM RECEIVED`),color='blue')+
+  geom_line(aes(x=DATE, y=`REP RECEIVED`),color='red')+
+  geom_line(aes(x=DATE, y=`OTH RECEIVED`),color='purple')+
+  labs(
+    title="Ballots received by party",
+    x = "Party",
+    y = "Ballots returned",
+    caption = "Source: Maryland State Board of Elections"
+  )+
+  theme_minimal()
+  
+```
+
 
 **Q4.** A scatterplot is a type of chart that helps us see relationships between two variables. One variable goes on the x axis, the other on the y axis. For each row/observation in our data, a scatterplot puts a circle (or a "point") where the two variables intersect on a grid.
 
