@@ -35,7 +35,9 @@ HINT: In Datawrapper's "Check and Describe" tab, you can click on a column to ge
 What do you think the story here is? Put the answer below along with the URL of your chart.
 
 **A1.**
+https://datawrapper.dwcdn.net/Rcg9c/1/ 
 
+Maryland voters mostly voted by mail in 2022, reversing the switch to mostly mail-in voting in 2020. Mail-in voting fell to the third-most used option for voting in Maryland. 
 ```{r}
 md_votes_by_type <- read_csv("data/md_votes_by_type.csv")
 ```
@@ -73,6 +75,7 @@ Tell me below why you picked the CSV you did. If you made any changes to the dat
 **A2.** 
 
 ```{r}
+ev_totals_rep <- read_csv("data/ev-totals_rep.csv")
 ```
 
 **Q3.** After reading the recent CNN story about fundraising called "[How elderly dementia patients are unwittingly fueling political campaigns](https://www.cnn.com/interactive/2024/10/politics/political-fundraising-elderly-election-invs-dg/)," you decide to dig into the habits of Maryland political donors who give money via ActBlue and WinRed.
