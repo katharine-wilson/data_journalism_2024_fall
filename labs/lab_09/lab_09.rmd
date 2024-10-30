@@ -85,7 +85,7 @@ total_row <- ev_totals_rep |>
 ```
 
 ```{r}
-ev_totals_rep <- ev_totals_rep |> 
+ev_with_totals_rep <- ev_totals_rep |> 
   rbind(County_totals = total_row)
 ```
 
