@@ -49,6 +49,11 @@ md_votes_by_type <- md_votes_by_type |>
   rename(By.mail = pct_mail)
 ```
 
+```{r}
+write_csv(md_votes_by_type, "data/md_votes_by_type.csv")
+```
+
+
 **Q2.** You've been assigned to track early-voting turnout in Maryland at the county level. To do that, use [data from the state](https://elections.maryland.gov/press_room/2024_stats/PG24/EarlyVoting%20RAW%20data.csv). YOU DO NOT NEED TO LOAD THIS FILE. I've created several CSV files from it; each has a row for each day, with the counties as columns, so you can track early voting turnout in certain categories. The available files in the data folder are:
 
 * ev_totals_18_24.csv - early voting turnout by the 18-24 age group
@@ -89,6 +94,9 @@ ev_with_totals_rep <- ev_totals_rep |>
   rbind(County_totals = total_row)
 ```
 
+```{r}
+write_csv(ev_with_totals_rep, "data/ev_with_totals_rep.csv")
+```
 
 **Q3.** After reading the recent CNN story about fundraising called "[How elderly dementia patients are unwittingly fueling political campaigns](https://www.cnn.com/interactive/2024/10/politics/political-fundraising-elderly-election-invs-dg/)," you decide to dig into the habits of Maryland political donors who give money via ActBlue and WinRed.
 
