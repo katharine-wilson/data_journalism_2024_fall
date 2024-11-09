@@ -1,0 +1,191 @@
+---
+title: "lab_10"
+author: "Katharine Wilson"
+date: "2024-11-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## You will need
+
+-   the tidyverse, janitor and tigris libraries
+-   you might choose to use the tidycensus library for Q3
+
+## Load libraries and establish settings
+
+**Task** Create a codeblock and load appropriate packages and settings for this lab.
+
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load libraries
+library(tidyverse)
+library(sf)
+library(janitor)
+library(tigris)
+```
+
+Let's explore the election results from last night and make some maps!
+
+## Questions
+
+**Q1.** Make a county-level map of Maryland's results for U.S. Senate using `md_senate_county_24.csv` in the data folder, calculating the difference between Angela Alsobrooks's percentage of the total votes and Larry Hogan's percentage of the total votes and displaying that percentage difference on the map. What is the story here, and what is the county with the most interesting results?
+
+**A1.**
+Alsobrooks' Senate win relied on counties around D.C. and Baltimore. Outside of these counties, Hogan dominated the voter pool. The county with the most interesting results is Frederick County which voted more for Hogan than Alsobrooks. Frederick is usually a bellwether county which makes it suprsisng that a candidate who loses Frederick could still win the state. 
+```{r}
+md_senate_county_24 <- read_csv("data/md_senate_county_24.csv")
+```
+
+```{r}
+counties <- counties()
+
+md_counties <- counties |>
+  filter(STATEFP == "24")
+```
+
+```{r}
+md_counties |>
+  ggplot() +
+  geom_sf() +
+  theme_minimal()
+```
+
+```{r}
+md_senate_county_24 <- md_senate_county_24 |>
+  mutate(GEOID = as.character(GEOID))
+```
+
+```{r}
+md_senate_with_shape <- md_counties |> left_join(md_senate_county_24, by=c("GEOID"="GEOID"))
+```
+
+```{r}
+md_senate_with_shape <- md_senate_with_shape |>
+  mutate(total= Alsobrooks + Hogan + Scott)|>
+  mutate(Alsobrooks_Percent_Won = (Alsobrooks /total)*100)|>
+  mutate(Hogan_Percent_Won = (Hogan / total)*100)|>
+  mutate(Alsobrooks_Vote_Difference_from_Hogan= Alsobrooks_Percent_Won - Hogan_Percent_Won)
+```
+
+```{r}
+ggplot() +
+  geom_sf(data=md_senate_with_shape, aes(fill= Alsobrooks_Vote_Difference_from_Hogan)) +
+  scale_fill_viridis_b(option="magma") + 
+  theme_minimal()+
+  labs(
+    title="Alsobrooks won counties around D.C. and Baltimore, elsewhere Hogan dominated",
+    caption = "Source: Maryland State Board of Elections")
+```
+
+
+**Q2.** Make a county-level map showing the difference between Donald Trump's county-level performance this year and Larry Hogan's, using percentages to compare the two as you did in Q1. You can use the dataframe you initially loaded for Q1, and you'll need to load the 2024 presidential results in the data folder and join them to it before proceeding. Are there any counties where Trump got a higher percentage than Hogan? How would you describe the map showing the Trump-Hogan difference?
+
+Also answer this: is a map the best way to present this data? What else could you make that might convey more information?
+
+**A2.**
+Yes there are counties where Trump got a higher percentage than Hogan (Allegany, Garrett and Somerset). More people voted for Hogan than Trump in traditional Democratic strongholds, signaling that there may have been some split-ticket voters in the area. The map shows voters reflecting this pattern. A double bar chart would present the data in a more clear way. There could be two bars for each county, each representing the percentage of the vote ammassed by each candidate. This map is confusing and requires too much explanation to be used in a story. 
+```{r}
+md_pres_county_24 <- read_csv("data/md_pres_county_24.csv")
+```
+
+```{r}
+md_pres_county_24 <- md_pres_county_24 |>
+  mutate(GEOID = as.character(GEOID))
+```
+
+```{r}
+md_senate_with_pres <- md_senate_with_shape |> left_join(md_pres_county_24, by=c("GEOID"="GEOID"))
+```
+
+```{r}
+md_senate_with_pres <- md_senate_with_pres |>
+  mutate(Pres_total = Harris + Trump + Oliver + Stein + Kennedy)|>
+  mutate(Trump_Percent_Won = (Trump/ Pres_total )*100)|>
+  mutate(Hogan_Percent_Won = (Hogan / total)*100)|>
+  mutate(Hogan_difference_Trump= Hogan_Percent_Won - Trump_Percent_Won)
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = md_senate_with_pres, aes(fill= Hogan_difference_Trump)) +
+  scale_fill_viridis_b(option="magma") + 
+  theme_minimal()+
+  labs(
+    title="Hogan beat Trump in some Democratic areas, signifying possible split ticket voters",
+    caption = "Source: Maryland State Board of Elections")
+```
+
+**Q3** Make another map showing the difference between Larry Hogan's county-level performance this year and from his governor race in 2018, using percentages to compare the two as you did in Q2. You can use the dataframe you initially loaded for Q1, and you'll need to load the 2018 governor results in the data folder and join them to it before proceeding. Are there any counties where Hogan did better this year? How would you describe the map showing the difference?
+
+Hogan did worse in 2024 than in 2018 in every Maryland county. The map shows that his biggest losses came from around Baltimore.
+
+**A3**
+```{r}
+md_gov_county_18 <- read_csv("data/md_gov_county_18.csv")
+```
+
+```{r}
+md_gov_county_18 <- md_gov_county_18 |>
+  mutate(GEOID = as.character(GEOID))
+```
+
+
+```{r}
+md_hogan_2024_2018 <- md_senate_with_shape |> left_join(md_gov_county_18, by=c("GEOID"="GEOID"))
+```
+
+```{r}
+md_hogan_2024_2018 <- md_hogan_2024_2018 |>
+  mutate(total_2018 = Hogan.y + Jealous + Quinn + Schlakman + `Write-ins`)|>
+  mutate(Hogan_percent_won_2018_Governor = (Hogan.y/total_2018)*100)|>
+  mutate(Hogan2018_Subtractedby_Hogan2024 = Hogan_percent_won_2018_Governor - Hogan_Percent_Won)
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = md_hogan_2024_2018, aes(fill= Hogan2018_Subtractedby_Hogan2024)) +
+  scale_fill_viridis_b(option="magma") + 
+  theme_minimal()+
+  labs(
+    title="In every county, Hogan underperformed his 2018 gubernatorial run",
+    caption = "Source: Maryland State Board of Elections")
+```
+
+
+**Q4.** Choose your own map adventure! In the data folder I've included Maryland county-level results for the abortion rights amendment vote this year, plus the 2020 presidential results by county and 2022 governor's results by county. Using one of those and at least one other contest for comparison, make a county-level map showing what you think is the most interesting aspect of that data, and describe the results in terms of a possible story. You can bring in other data, such as Census information, if you like.
+
+**A4.**
+Even in Trump-voting areas, codifying reproductive rights in the Maryland state constitution were voted on favorably. This means that there was a great share of non-Harris voters who sided with codifying reproductive rights. This could be used in a story about the broad support of reproductive rights across political parties. This was interesting to me because I met a few Trump voters on election day who said they voted for Question 1. 
+
+```{r}
+md_abortion_24 <- read_csv("data/md_abortion_24.csv")
+```
+
+```{r}
+md_pres_with_abortion <- md_senate_with_pres |> left_join(md_abortion_24, by=c("NAME"="County"))
+```
+
+```{r}
+md_pres_with_abortion <- md_pres_with_abortion |> 
+  mutate(Abortion_Total = For + Against)|>
+  mutate(Abortion_Percent_Yes = (For/Abortion_Total)*100)|>
+  mutate(Harris_Percent_Won = (Harris /Pres_total)*100)|>
+  mutate(Non_Harris_Voters_For_Abortion = Abortion_Percent_Yes - Harris_Percent_Won)
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = md_pres_with_abortion, aes(fill= Non_Harris_Voters_For_Abortion)) +
+  scale_fill_viridis_b(option="magma") + 
+  theme_minimal()+
+  labs(
+    title="Abortion rights got a higher vote share in Maryland than Harris",
+    caption = "Source: Maryland State Board of Elections")
+```
+
+-30-
