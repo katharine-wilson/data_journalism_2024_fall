@@ -41,3 +41,5 @@ vignettes/*.pdf
 # DS Store
 .DS_Store
 *.DS_Store
+FEC MD /md_voters_for_match.csv
+FEC MD /md_voters_for_match.csv.zip

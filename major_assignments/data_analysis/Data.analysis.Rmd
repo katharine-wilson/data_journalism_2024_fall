@@ -1,0 +1,46 @@
+---
+title: "Data Analysis Project"
+author: "Katharine Wilson, Samuel Jane and Loretta Puwler"
+date: "2024-11-16"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(tidycensus)
+```
+
+
+Questions: 
+1. What are the average ages of people in precincts in Maryland with the highest rates of election day voting and mail-in voting? 
+2. Which precincts have the highest rates of early voting? 
+3. How does early voting participation in Maryland for Governor compare to presidential elections? 
+4. For the precincts that swayed the most towards Trump from 2020 to 2024, what is their average income? 
+5. Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
+
+```{r}
+early_voting <- read_csv("EarlyVoting RAW data.csv")
+```
+Rows: 11,886 
+Columns: 10
+
+Loading in census data 
+```{r}
+acs5 <- load_variables(2022, "acs5", cache = TRUE)
+View(acs5)
+```
+
+```{r}
+early_voting_2022 <- read_csv("EarlyVoting RAW data 2022.csv")
+```
+
+```{r}
+early_voting_2020 <- read_csv("EarlyVoting RAW data 2020.csv")
+```
+
+
+We will have to merge the 5-year acs to: 
+Find the average income for question 4 
+Find the precincts with the highest Black population for question 5 
+
+We will have to also use the 2020 early voting data and 2022 data for questions 3 and 4. 

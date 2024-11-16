@@ -94,5 +94,32 @@ Finally, tell me what questions you could ask of this data, and what other infor
 **A3**
 
 ```{r}
-
+press_releases <- "https://www.cardin.senate.gov/?post_type=press-releases"
 ```
+
+```{r}
+press_results <- press_releases |>
+  read_html()
+```
+
+```{r}
+press_results |> html_elements('article')
+```
+
+```{r}
+press_article <- press_results |> html_elements("article")
+```
+
+```{r}
+press_with_urls <- tibble(
+  date = press_article  %>% html_attr("h5"),
+  url = press_article %>% html_attr("href"),
+  name = press_article %>% html_attr("p")
+)
+```
+committees <- cmte_results |> html_elements("li a")
+
+committees_with_urls <- tibble(
+  name = committees %>% html_text(trim = TRUE),
+  url = committees %>% html_attr("href")
+  
