@@ -91,6 +91,8 @@ When you're done, rename the columns so they make sense, then make sure the date
 
 Finally, tell me what questions you could ask of this data, and what other information about it would be useful to have. Be creative.
 
+I could look at how often Sen. Cardin sends out press releases and if the coordinates to when Congress is in session. I could also probably look into specific keywords in press release titles like "Biden" and "Van Hollen" and their frequency. It would also be useful to have the dateline of each press release to see which offices Cardin is prioriizing (Annapolis, Washington D.C.). 
+
 **A3**
 
 ```{r}
@@ -107,19 +109,20 @@ press_results |> html_elements('article')
 ```
 
 ```{r}
-press_article <- press_results |> html_elements("article")
+press_results |> html_elements('article') |> html_text()
 ```
 
 ```{r}
-press_with_urls <- tibble(
-  date = press_article  %>% html_attr("h5"),
-  url = press_article %>% html_attr("href"),
-  name = press_article %>% html_attr("p")
+press_results_date <- press_results |> html_elements('article h5')
+press_results_url <- press_results |> html_elements ('article h3 a')
+press_results_title <-press_results |> html_elements ('article h3')
+```
+
+```{r}
+press_results_all <- tibble(
+  date = press_results_date %>% html_text(trim = TRUE),
+  url = press_results_url %>% html_attr("href"),
+  title = press_results_title %>% html_text(trim = TRUE),
 )
 ```
-committees <- cmte_results |> html_elements("li a")
 
-committees_with_urls <- tibble(
-  name = committees %>% html_text(trim = TRUE),
-  url = committees %>% html_attr("href")
-  
