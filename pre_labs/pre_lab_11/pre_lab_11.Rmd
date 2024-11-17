@@ -270,7 +270,7 @@ committees <- cmte_results |> html_elements("li a")
 
 committees_with_urls <- tibble(
   name = committees %>% html_text(trim = TRUE),
-  url = committees %>% html_attr("href")
+  url = committees %>% html_attr("href"),
 )
 ```
 

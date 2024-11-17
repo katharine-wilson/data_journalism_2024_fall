@@ -21,6 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(rvest)
 library(tidyverse)
 library(janitor)
+library(lubridate)
 ```
 
 Let's get to scraping. We'll be working on collecting information about Maryland election results, and then we'll grab some congressional press releases. For Maryland races, we'll focus on Board of Education races using this CNS story as a guide: <https://cnsmaryland.org/2024/11/08/md-conservatives-make-gains-in-school-board-races/>. You should read it.
@@ -79,7 +80,55 @@ education_board_results <- results |>
 
 education_board_results
 ```
+**Q2** Next, let's scrape the list of press releases from Maryland's Office of the State Prosecutor, <https://osp.maryland.gov/category/press-releases/>. This isn't a table, so you'll need to use `html_elements()` and your browser's inspector and do some clean up on the results. The result should be a dataframe with three columns: title, url and date. HINT: you can extract the date from the title using lubridate OR you can use the `separate` function.
 
+You should have 10 releases when finished, not 20.
+
+Then, write code that finds the most recent release with the word "Campaign" in the title. What election does it refer to?
+
+The most ecent release with the word campaign is from April about the 2022 primary. 
+
+**A2**
+```{r}
+prosecutor_releases <- "https://osp.maryland.gov/category/press-releases/"
+```
+
+```{r}
+prosecutor_results <- prosecutor_releases |>
+  read_html()
+```
+
+```{r}
+prosecutor_results |> html_elements('article') |> html_text()
+```
+
+```{r}
+prosecutor_url <- prosecutor_results |> html_elements('article p a')
+prosecutor_date <- prosecutor_results |> html_elements('article time')
+prosecutor_title <- prosecutor_results |> html_elements('article h2 a')
+```
+
+```{r}
+prosecutor_results_all <- tibble(
+  date = prosecutor_date %>% html_text(trim = TRUE),
+  url = prosecutor_url %>% html_attr("href"),
+  title = prosecutor_title %>% html_attr("title")
+)
+```
+
+```{r}
+results_all_all <-
+separate(prosecutor_results_all, col=title, into=c('date2', 'title2'), sep=':')
+```
+
+```{r}
+results_all_minus <- results_all_all [-3]
+```
+
+```{r}
+  results_inorder <-
+  results_all_minus[(order(as.Date(results_all_minus$date, format="mdy"))),]
+```
 
 **Q3** Sen. Ben Cardin, D-Maryland, has posted hundreds of press releases at <https://www.cardin.senate.gov/?post_type=press-releases>. It would be great to have all of them in a dataframe that has the following columns: date, title and url.
 
