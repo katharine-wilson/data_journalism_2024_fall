@@ -72,7 +72,7 @@ education_board_results <- results |>
   coord_flip()+
   theme_minimal() +
   labs(
-    title="The Board of Education race was close in Frederick County",
+    title="Brennan, Monier and Black win Frederick County School Board race, ",
     x = "Candidates",
     y = "Total Votes",
     caption = "The top 3 candidates win. Source: Maryland State Board of Elections"
