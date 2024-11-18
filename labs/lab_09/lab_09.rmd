@@ -77,7 +77,8 @@ Your chart MUST:
 Tell me below why you picked the CSV you did. If you made any changes to the data, put that code below.
 
 **A2.** 
-
+https://datawrapper.dwcdn.net/3Z6hv/1/ 
+When did people go early voting in Maryland? Was voting higher on the weekend when less people work? 
 ```{r}
 ev_totals_rep <- read_csv("data/ev_totals_rep.csv")
 ```
@@ -135,4 +136,7 @@ md_actblue_zip_totals <- read_csv("data/md_actblue_zip_totals.csv")
 
 ```
 
+```{r}
+acs5 <- load_variables(2020, "acs5", cache = TRUE)
+```
 
