@@ -140,3 +140,47 @@ md_actblue_zip_totals <- read_csv("data/md_actblue_zip_totals.csv")
 acs5 <- load_variables(2020, "acs5", cache = TRUE)
 ```
 
+```{r}
+md <- get_acs(geography = "zcta",
+              variables = c(population = "B01003_001"),
+              state = "MD",
+              year = 2019)
+```
+
+
+```{r}
+md_actblue_zip_totals <- md_actblue_zip_totals |>
+  mutate(zip = as.character(zip))
+```
+
+
+```{r}
+blue_with_pop <- md_actblue_zip_totals |>
+left_join(md, join_by(zip == GEOID))
+```
+
+```{r}
+md_winred_zip_totals <- md_winred_zip_totals |>
+  mutate(zip = as.character(zip))
+```
+
+```{r}
+red_with_pop <- md_winred_zip_totals |>
+left_join(md, join_by(zip == GEOID))
+```
+
+```{r}
+blue_with_pop <- blue_with_pop |>
+  mutate(Donations_Per100 = (donations/estimate)*1000)
+```
+
+```{r}
+red_with_pop <- red_with_pop |>
+  mutate(Donations_Per100 = (donations/estimate)*1000)
+```
+
+```{r}
+write_csv(blue_with_pop, "data/blue_with_pop.csv")
+write_csv(red_with_pop, "data/red_with_pop.csv")
+```
+
