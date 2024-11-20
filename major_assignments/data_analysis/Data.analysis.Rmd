@@ -44,3 +44,38 @@ Find the average income for question 4
 Find the precincts with the highest Black population for question 5 
 
 We will have to also use the 2020 early voting data and 2022 data for questions 3 and 4. 
+
+--------------
+Question #3: 
+How does early voting participation in Maryland for Governor compare to presidential elections? 
+
+```{r}
+md_earlyvote2024 <- early_voting |>
+  mutate(across(starts_with("Day"), ~ replace_na(. , 0)))|>
+  mutate(Total2024 = Day1 + Day2 + Day3 + Day4 + Day5 +Day6 + Day7 + Day8)
+```
+
+```{r}
+md_earlyvote2022 <- early_voting_2022 |>
+  mutate(across(starts_with("Day"), ~ replace_na(. , 0)))|>
+  mutate(Total2022 = Day1 + Day2 + Day3 + Day4 + Day5 +Day6 + Day7 + Day8)
+```
+
+```{r}
+md_earlyvote2024_squeezed <- md_earlyvote2024 |> 
+  group_by(COUNTY_NAME)|>
+  summarize(
+  sum(Total2024))
+```
+
+```{r}
+md_earlyvote2022_squeezed <- md_earlyvote2022 |> 
+  group_by(COUNTY_NAME)|>
+  summarize(
+  sum(Total2022))
+```
+
+```{r}
+md_earlyvote_22_24 <- md_earlyvote2022_squeezed |> left_join(md_earlyvote2024_squeezed, join_by(COUNTY_NAME == COUNTY_NAME))
+```
+
