@@ -129,6 +129,9 @@ Then export each dataframe using `write_csv` and make two (2) choropleth maps in
 Compare the two maps. What do you think are the most interesting story ideas in both, and what would you want to know more about? Put the answer below along with the URLs of your maps.
 
 **A3.** 
+https://datawrapper.dwcdn.net/3GKFT/2/
+https://datawrapper.dwcdn.net/aNfPJ/1/
+I'm most interested in looking into the few outlier counties on the Eastern Shore that had the highest rates of ActBlue donations, even in a red congressional district, and what is unique about these areas. In the WinRed map, I'm most interested in the average amount of donations - especially because the highest rates of donations came from rural areas and lower rates came from wealthier suburbs. 
 
 ```{r}
 md_winred_zip_totals <- read_csv("data/md_winred_zip_totals.csv")
@@ -146,7 +149,6 @@ md <- get_acs(geography = "zcta",
               state = "MD",
               year = 2019)
 ```
-
 
 ```{r}
 md_actblue_zip_totals <- md_actblue_zip_totals |>
