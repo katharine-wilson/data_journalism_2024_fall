@@ -18,7 +18,7 @@ library(dplyr)
 
 Questions: 
 1. What are the average ages of people in precincts in Maryland with the highest rates of election day voting and mail-in voting? 
-2. Which precincts have the highest rates of early voting of people who voted? (DONE)
+2. Which precincts have the highest rates of early voting of people who voted? 
 3. How does early voting participation in Maryland for Governor compare to presidential elections? 
 4. For the precincts that swayed the most towards Trump from 2020 to 2024, what is their average income? 
 5. Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
@@ -93,6 +93,12 @@ precinct_total_election_2024 <- precinct_total_election_2024 |>
 precinct_total_election_2024 <- precinct_total_election_2024 |>
   rename(Total2024 =`sum(Total2024)`)
 ```
+
+//////////////////////////////////////////////////
+Question #1:
+ What are the average ages of people in precincts in Maryland with the highest rates of election day voting and mail-in voting? 
+ 
+ We need the Maryland voter files for this, we will request it this week. 
 
 ////////////////////////////////////////////////
 
@@ -234,18 +240,48 @@ all_together <- all_together |>
 ```
 
 This shows that Charles County had the highest growth in early voting between 2022 and 2024. The county increased it's rate of voters choosing early voting by five percentage points. 
+////////////////////////////////
+Question #4: 
+For the precincts that swayed the most towards Trump from 2020 to 2024, what is their average income?  
 
-------NOTES______________
+First, we are going to load in the 2020 total voting data. 
 
 ```{r}
-early_voting_2020 <- read_csv("EarlyVoting RAW data 2020.csv")
+Total_2020 <-read_csv("All_By_Precinct_2020_General.csv")
 ```
 
-Loading in census data 
+```{r}
+Trump_Total_2020 <- Total_2020 |>
+  filter(`Candidate Name` == "Donald J. Trump")
+```
+
+```{r}
+Trump_Total_2024 <-total_election_2024|>
+  filter(`Candidate Name` == "Donald J. Trump and JD Vance")
+```
+
+We will next find the Trump vote percentage amongst the various populations in 2020 compared to 2024. We will join the columns to stack it up and then find the change in percentage.
+
+Then we will load the census data for the largest shifts and see of the average income correlates.
+
+//////////////////////////////////////////////////////////////////////////
+Question #5: Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
+
+We will be using census racial demographics for this (the acs5)
+
 ```{r}
 acs5 <- load_variables(2022, "acs5", cache = TRUE)
 View(acs5)
 ```
+
+B02001_003 (Black or African American alone)
+
+We will load the census data for maryland with the highest black populations and then join that with the Trump voter percentage by county. Then we will add the raw number for Trump percentage and then compare it to maryland
+
+------NOTES______________
+
+Loading in census data 
+
 
 We will have to merge the 5-year acs to: 
 Find the average income for question 4 
