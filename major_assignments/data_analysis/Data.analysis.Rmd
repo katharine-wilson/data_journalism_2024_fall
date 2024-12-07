@@ -4,25 +4,242 @@ author: "Katharine Wilson, Samuel Jane and Loretta Puwler"
 date: "2024-11-16"
 output: html_document
 ---
+```{r}
+install.packages("janitor")
+```
 
 ```{r}
 library(tidyverse)
 library(tidycensus)
+library(janitor)
+library(dplyr)
 ```
 
 
 Questions: 
 1. What are the average ages of people in precincts in Maryland with the highest rates of election day voting and mail-in voting? 
-2. Which precincts have the highest rates of early voting? 
+2. Which precincts have the highest rates of early voting of people who voted? (DONE)
 3. How does early voting participation in Maryland for Governor compare to presidential elections? 
 4. For the precincts that swayed the most towards Trump from 2020 to 2024, what is their average income? 
 5. Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
 
+
+First we are setting up the data sets for use. 
+
+Early voting data from 2024:
 ```{r}
 early_voting <- read_csv("EarlyVoting RAW data.csv")
 ```
-Rows: 11,886 
-Columns: 10
+
+```{r}
+md_earlyvote2024 <- early_voting |>
+  mutate(across(starts_with("Day"), ~ replace_na(. , 0)))|>
+  mutate(Early_Total2024 = Day1 + Day2 + Day3 + Day4 + Day5 +Day6 + Day7 + Day8)
+```
+
+```{r}
+md_earlyvote2024_squeezed <- md_earlyvote2024 |>
+  group_by(COUNTY_NAME)|>
+  summarize(
+  sum(Early_Total2024))
+```
+
+**IMPORTANT ONE 
+```{r}
+precincts_md_earlyvote2024 <- md_earlyvote2024 |> 
+  group_by(COUNTY_NAME, Precinct)|>
+  summarize(
+    sum(Early_Total2024)
+  )
+```
+
+
+```{r}
+precincts_md_earlyvote2024 <- precincts_md_earlyvote2024 |>
+  rename(Early_Total2024 =`sum(Early_Total2024)`)
+```
+
+
+Total voting data from 2024:
+```{r}
+total_election_2024 <- read_csv("PG24_AllPrecincts.csv")
+```
+
+```{r}
+total_election_2024 <- total_election_2024 |>
+mutate(Total2024 = `Early Votes` + `Election Night Votes` + `Mail-In Ballot 1 Votes` + `Mail-In Ballot 2 Votes` + `Provisional Votes`)
+```
+
+```{r}
+total_election_2024_squeezed <- total_election_2024 |>
+  group_by(`County Name`)|>
+  summarize(
+  sum(Total2024))
+```
+
+```{r}
+precinct_total_election_2024 <- total_election_2024 |>
+  group_by(`County Name`, `Election District - Precinct`)|>
+  summarize(
+  sum(Total2024))
+```
+
+```{r}
+precinct_total_election_2024 <- precinct_total_election_2024 |>
+  mutate(`County Name` = str_remove(`County Name`," County"))
+```
+
+```{r}
+precinct_total_election_2024 <- precinct_total_election_2024 |>
+  rename(Total2024 =`sum(Total2024)`)
+```
+
+////////////////////////////////////////////////
+
+Question #2: 
+Which precincts have the highest rates of early voting of people who voted? 
+
+First, we are going to join the csvs for early voting and total voting in each precinct together. We are also replacing NAs with 0s. 
+```{r}
+combined_2024 <- precinct_total_election_2024 |>
+  left_join(precincts_md_earlyvote2024, join_by(`County Name` == COUNTY_NAME, `Election District - Precinct` == Precinct))|>
+  mutate(across(starts_with("Early"),~ replace_na(. , 0)))|>
+  mutate(across(starts_with("Total"),~ replace_na(. , 0)))
+```
+
+Then, we are going to find the percent of people who voted early out of the total number of people who voted per precinct by creating a new column. 
+
+```{r}
+combined_2024 <- combined_2024 |>
+  mutate(Early_Turnoutrate_2024 = (Early_Total2024/Total2024)*100)
+```
+
+Now, we are going to order them from highest early voting turnout to lowest. 
+```{r}
+combined_2024 <- combined_2024|>
+  arrange(desc(Early_Turnoutrate_2024))
+```
+
+Our answer:
+The precinct with the highest early voting turnout rate in Maryland was in Anne Arundel County (precinct 005-032). The rest of the top five precincts were from Wicomico and Somerset. 
+
+What we don't know: 
+What makes these precincts vote at higher rates? Are there historical/demographic/access reasons behind this? 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--------------
+Question #3: 
+How does early voting participation in Maryland for Governor compare to presidential elections? 
+
+First, we are going to load in the data for early voting 2022. 
+
+```{r}
+early_voting_2022 <- read_csv("EarlyVoting RAW data 2022.csv")
+```
+
+```{r}
+md_earlyvote2022 <- early_voting_2022 |>
+  mutate(across(starts_with("Day"), ~ replace_na(. , 0)))|>
+  mutate(Early_Total2022 = Day1 + Day2 + Day3 + Day4 + Day5 +Day6 + Day7 + Day8)
+```
+
+```{r}
+md_earlyvote2022_squeezed <- md_earlyvote2022 |> 
+  group_by(COUNTY_NAME)|>
+  summarize(
+  sum(Early_Total2022))
+```
+
+```{r}
+md_earlyvote2022_squeezed <-md_earlyvote2022_squeezed |>
+  rename(Early_Total2022 = `sum(Early_Total2022)`)
+```
+
+```{r}
+md_earlyvote2024_squeezed<-md_earlyvote2024_squeezed|>
+     rename(Early_Total2024 = `sum(Early_Total2024)`)
+```
+
+Now, we are loading in the total election vote records for 2022 and cleaning up the data. (this is the next few code blocks)
+```{r}
+total_vote_2022 <- read.csv("GG22_AllPrecincts.csv")
+```
+
+```{r}
+total_vote_2022 <- total_vote_2022|>
+mutate(Total2022 = Early.Votes + Election.Night.Votes + Mail.In.Ballot.1.Votes + Mail.In.Ballot.2.Votes + Provisional.Votes)
+```
+
+```{r}
+total_vote2022_squeezed <- total_vote_2022 |>
+  group_by(County.Name)|>
+  summarize(
+  sum(Total2022))
+```
+
+```{r}
+total_vote2022_squeezed <- total_vote2022_squeezed|>
+  rename(Total2022 = `sum(Total2022)`)
+```
+
+```{r}
+total_vote2022_squeezed <-total_vote2022_squeezed|>
+ mutate(County.Name = str_remove(County.Name," County"))
+```
+
+```{r}
+md_earlyvote2022_squeezed <- md_earlyvote2022_squeezed|>
+  mutate(COUNTY_NAME = str_remove(COUNTY_NAME," County"))
+```
+
+
+Now, we will make a csv that includes the total and early vote numbers for the 2022 election
+```{r}
+together_2022 <- total_vote2022_squeezed |>
+  left_join(md_earlyvote2022_squeezed, join_by(County.Name == COUNTY_NAME))
+```
+
+Now, we will make a csv that includes the total and early vote numbers for the 2024 election
+
+```{r}
+total_election_2024_squeezed <- total_election_2024_squeezed |>
+  rename(Total2024 = `sum(Total2024)`)
+```
+
+```{r}
+total_election_2024_squeezed <- total_election_2024_squeezed |>
+  mutate(`County Name` = str_remove(`County Name`," County"))
+```
+
+```{r}
+md_earlyvote2024_squeezed <- md_earlyvote2024_squeezed |>
+  mutate(COUNTY_NAME = str_remove(COUNTY_NAME," County"))
+```
+
+```{r}
+together_2024 <- total_election_2024_squeezed |>
+  left_join(md_earlyvote2024_squeezed, join_by(`County Name` == COUNTY_NAME))
+```
+
+```{r}
+all_together <- together_2024 |> left_join(together_2022, join_by(`County Name` == County.Name))
+```
+
+```{r}
+all_together <- all_together |>
+  mutate(EarlyRate2022 = (Early_Total2022/Total2022)*100)|>
+  mutate(EarlyRate2024 = (Early_Total2024/Total2024)*100)|>
+  mutate(Rate_Diff_2422 = EarlyRate2024 - EarlyRate2022)|>
+  arrange(desc(Rate_Diff_2422))
+```
+
+This shows that Charles County had the highest growth in early voting between 2022 and 2024. The county increased it's rate of voters choosing early voting by five percentage points. 
+
+------NOTES______________
+
+```{r}
+early_voting_2020 <- read_csv("EarlyVoting RAW data 2020.csv")
+```
 
 Loading in census data 
 ```{r}
@@ -30,52 +247,9 @@ acs5 <- load_variables(2022, "acs5", cache = TRUE)
 View(acs5)
 ```
 
-```{r}
-early_voting_2022 <- read_csv("EarlyVoting RAW data 2022.csv")
-```
-
-```{r}
-early_voting_2020 <- read_csv("EarlyVoting RAW data 2020.csv")
-```
-
-
 We will have to merge the 5-year acs to: 
 Find the average income for question 4 
 Find the precincts with the highest Black population for question 5 
 
 We will have to also use the 2020 early voting data and 2022 data for questions 3 and 4. 
-
---------------
-Question #3: 
-How does early voting participation in Maryland for Governor compare to presidential elections? 
-
-```{r}
-md_earlyvote2024 <- early_voting |>
-  mutate(across(starts_with("Day"), ~ replace_na(. , 0)))|>
-  mutate(Total2024 = Day1 + Day2 + Day3 + Day4 + Day5 +Day6 + Day7 + Day8)
-```
-
-```{r}
-md_earlyvote2022 <- early_voting_2022 |>
-  mutate(across(starts_with("Day"), ~ replace_na(. , 0)))|>
-  mutate(Total2022 = Day1 + Day2 + Day3 + Day4 + Day5 +Day6 + Day7 + Day8)
-```
-
-```{r}
-md_earlyvote2024_squeezed <- md_earlyvote2024 |> 
-  group_by(COUNTY_NAME)|>
-  summarize(
-  sum(Total2024))
-```
-
-```{r}
-md_earlyvote2022_squeezed <- md_earlyvote2022 |> 
-  group_by(COUNTY_NAME)|>
-  summarize(
-  sum(Total2022))
-```
-
-```{r}
-md_earlyvote_22_24 <- md_earlyvote2022_squeezed |> left_join(md_earlyvote2024_squeezed, join_by(COUNTY_NAME == COUNTY_NAME))
-```
 
