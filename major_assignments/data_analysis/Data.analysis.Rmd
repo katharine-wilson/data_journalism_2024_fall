@@ -20,7 +20,7 @@ Questions:
 1. What are the average ages of people in precincts in Maryland with the highest rates of election day voting and mail-in voting? 
 2. Which precincts have the highest rates of early voting of people who voted? 
 3. How does early voting participation in Maryland for Governor compare to presidential elections? 
-4. For the precincts that swayed the most towards Trump from 2020 to 2024, what is their average income? 
+4. DONE For the precincts that swayed the most towards Trump from 2020 to 2024, what is their average income? 
 5. Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
 
 
@@ -129,8 +129,7 @@ combined_2024 <- combined_2024|>
 Our answer:
 The precinct with the highest early voting turnout rate in Maryland was in Anne Arundel County (precinct 005-032). The rest of the top five precincts were from Wicomico and Somerset. 
 
-What we don't know: 
-What makes these precincts vote at higher rates? Are there historical/demographic/access reasons behind this? 
+According to census reproter, this precinct has an average age of 33 (with most people between 18 and 64). The average income per household is $108,000 and most people live in homes with 2.4 people inside. This implies that most people who live in this precinct are comfortable and of an age where getting transportation and heading to the polls early is easier. 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 --------------
