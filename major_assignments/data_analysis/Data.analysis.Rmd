@@ -242,7 +242,7 @@ all_together <- all_together |>
 This shows that Charles County had the highest growth in early voting between 2022 and 2024. The county increased it's rate of voters choosing early voting by five percentage points. 
 ////////////////////////////////
 Question #4: 
-For the precincts that swayed the most towards Trump from 2020 to 2024, what is their average income?  
+For the counties that swayed the most towards Trump from 2020 to 2024, what is their average income?  
 
 First, we are going to load in the 2020 total voting data. 
 
@@ -250,18 +250,110 @@ First, we are going to load in the 2020 total voting data.
 Total_2020 <-read_csv("All_By_Precinct_2020_General.csv")
 ```
 
+
+  rename(TotalVotes ==`Total Votes`)
+
+```{r}
+Total_2020 <- Total_2020 |>
+  filter(`Office Name` == "President - Vice Pres")|>
+  rename(TotalVotes = `Total Votes`)|>
+  mutate(across(starts_with("Total"), ~ replace_na(. , 0)))
+```
+
+
 ```{r}
 Trump_Total_2020 <- Total_2020 |>
-  filter(`Candidate Name` == "Donald J. Trump")
+  filter(`Candidate Name` == "Donald J. Trump")|>
+  mutate(across(starts_with("Total"), ~ replace_na(. , 0)))
 ```
 
 ```{r}
 Trump_Total_2024 <-total_election_2024|>
-  filter(`Candidate Name` == "Donald J. Trump and JD Vance")
+  filter(`Candidate Name` == "Donald J. Trump and JD Vance")|>
+    mutate(across(starts_with("Total"), ~ replace_na(. , 0)))
 ```
 
-We will next find the Trump vote percentage amongst the various populations in 2020 compared to 2024. We will join the columns to stack it up and then find the change in percentage.
+This shows us how many people voted for Trump in each MD county in 2024: 
+```{r}
+Total24CountyTrump <- Trump_Total_2024 |>
+  group_by(`County Name`)|>
+  summarize(
+  sum(Total2024))
+```
 
+This shows us how many people voted for Trump in each MD county in 2020: 
+```{r}
+Total20CountyTrump <- Trump_Total_2020 |>
+  group_by(County) |>
+  summarize(sum(TotalVotes))
+```
+
+This shows us how many people voted for any presidential candidate in 2020: 
+```{r}
+Total_2020_pres <- Total_2020 |>
+  mutate(across(starts_with("Total"), ~ replace_na(. , 0)))|>
+  filter()
+  group_by(County) |>
+  summarize(sum(TotalVotes))
+```
+
+The second codeblock shows us the percent of presidential voters who voted for trump in each county in 2020, found after joining the two: 
+```{r}
+Trump20TotalCompare <- Total20CountyTrump |>
+  left_join(Total_2020_pres, join_by(County == County))
+```
+
+```{r}
+Trump20TotalCompare <- Trump20TotalCompare |>
+  rename(Allpresvotes = `sum(TotalVotes).y`)|>
+  rename(Trumpvotes = `sum(TotalVotes).x`)|>
+  mutate(PercentTrumpWon = (Trumpvotes/Allpresvotes)*100)
+```
+
+//////////
+```{r}
+census_api_key("41f507ff77bfed12e56b9c9420926d8c02d5b09d", install=TRUE)
+```
+```{r}
+acs_data <- get_acs( geography = "county", variables = "B19013_001", year = 2021, survey = "acs5", output = "wide")
+```
+
+acs_data <- get_acs( geography = "county",  # Data for counties variables = "B19013_001",  # Median Household Income variable code year = 2021,  # Year of ACS data survey = "acs5",  # 5-year estimates output = "wide"  # Wide format (gives you 'estimate' and 'moe' columns) )
+
+```{r}
+acs_data <- get_acs(geography = "county", year = 2020)
+```
+
+
+acs_data <- get_acs( geography = "county",  # You can change this to "state" or "tract" if needed variables ="B19013_001",  # Median household income variable code year = 2021,  # Year of ACS data survey = "acs5",  # 5-year estimates output = "wide"  # Wide format (gives you 'estimate' and 'moe' columns) ) # Check the structure of the datastr(acs_data) # Clean and calculate the average income by county average_income_by_county <- acs_data %>%select(NAME, estimate) %>%  # Keep only county name and income estimate group_by(NAME) %>%  # Group by county name summarize(avg_income = mean(estimate, na.rm = TRUE))  # Calculate average income per county # View the results head(average_income_by_county)
+
+Now that we have our data sets that include the number of people who voted for president in each county and the number
+
+NOTE: 
+01: Allegany
+02: Anne Arundel 
+03: Baltimore City 
+04: Baltimore
+05: Calvert
+06: Caroline
+07: Carroll
+08: Cecil
+09:Charles
+10: Dorchester
+11:Frederick 
+12: Garrett
+13: Harford
+14: Howard
+15: Kent
+16: Montgomery 
+17: Prince George's 
+18: Queen Anne's 
+19: St. Mary's
+20: Somerset
+21: Talbot
+22: Washington 
+23: Wicomico 
+24: Worchester 
 Then we will load the census data for the largest shifts and see of the average income correlates.
 
 //////////////////////////////////////////////////////////////////////////
