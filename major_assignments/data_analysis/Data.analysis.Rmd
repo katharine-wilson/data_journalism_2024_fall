@@ -18,7 +18,7 @@ library(dplyr)
 
 Questions: 
 1. What are the average ages of people in precincts in Maryland with the highest rates of election day voting and mail-in voting? 
-2. Which precincts have the highest rates of early voting of people who voted? 
+2. DONE Which precincts have the highest rates of early voting of people who voted? 
 3. How does early voting participation in Maryland for Governor compare to presidential elections? 
 4. DONE For the precincts that swayed the most towards Trump from 2020 to 2024, what is their average income? 
 5. Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
@@ -239,6 +239,8 @@ all_together <- all_together |>
 ```
 
 This shows that Charles County had the highest growth in early voting between 2022 and 2024. The county increased it's rate of voters choosing early voting by five percentage points. 
+
+Charles County, according to census reporter, has a lower proportion of people below the poverty line compared to all of Maryland which could contribute to the population's ability to physically get to early voting and the opportnity to become more informed in state elections (because they likely don't have to worry about getting through the day as much). The population of Charles County is 50% Black, which could impact their incentives to vote early in national elections.
 ////////////////////////////////
 Question #4: 
 For the counties that swayed the most towards Trump from 2020 to 2024, what is their average income?  
