@@ -333,20 +333,39 @@ Trump24TotalCompare <- Trump24TotalCompare |>
   mutate(PercentTrumpWon24 = (Trump24/Totalpres2024)*100)
 ```
 
-This will 
+This will bring all the numbers together:
+```{r}
+AllTrumppres2420 <-Trump24TotalCompare |>
+  left_join(Trump20TotalCompare, join_by(County == County))
+```
 
+```{r}
+AllTrumppres2420 <-AllTrumppres2420 |>
+  mutate(Diff2420 = PercentTrumpWon24 - PercentTrumpWon)|>
+  arrange(desc(Diff2420))
+```
+
+The code above shows that the top counties that leaned more towards Trump in 2024 than in 2020 were Montgomery, Calvert and Caroline counties. 
+
+Now, we're going to look at what each of these counties average income is. 
 //////////
 ```{r}
 census_api_key("41f507ff77bfed12e56b9c9420926d8c02d5b09d", install=TRUE)
 ```
+
 ```{r}
 acs_data <- get_acs( geography = "county", variables = "B19013_001", year = 2021, survey = "acs5", output = "wide")
 ```
 
-acs_data <- get_acs( geography = "county",  # Data for counties variables = "B19013_001",  # Median Household Income variable code year = 2021,  # Year of ACS data survey = "acs5",  # 5-year estimates output = "wide"  # Wide format (gives you 'estimate' and 'moe' columns) )
+^ Looking at this census data, which shows average income in 2021 in 2023 data the counties have the following average incomes: 
+Montgomery County: $117,345
+Calvert County: $120,295 per year
+Caroline County: $63,027 per year
 
-```{r}
-acs_data <- get_acs(geography = "county", year = 2020)
+These average incomes show that there was a broad switch to favoring Trump that included a wide range of average county wages. Montgomery and Calvert counties both have a relatively high average income were the top counties who swayed to Trump. Caroline County, in third place, had half of the average income as the top-two counties. 
+
+The counties that swayed the least towards Trump were Garrett, Charles and Anne Arundel. These counties had average incomes of $58,011 (Garrett), $107,808 (Charles) and $108,048. This shows again that the statwide lean towards Trump in Maryland counties did not seem to be determined by average income level - even though the economy was a big issue in campaign messaging. 
+
 ```
 
 
