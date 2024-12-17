@@ -276,9 +276,10 @@ Trump_Total_2024 <-total_election_2024|>
 This shows us how many people voted for Trump in each MD county in 2024: 
 ```{r}
 Total24CountyTrump <- Trump_Total_2024 |>
-  group_by(`County Name`)|>
+  group_by(`County`)|>
   summarize(
-  sum(Total2024))
+  sum(Total2024))|>
+  rename(Trump24 = `sum(Total2024)`)
 ```
 
 This shows us how many people voted for Trump in each MD county in 2020: 
@@ -292,7 +293,6 @@ This shows us how many people voted for any presidential candidate in 2020:
 ```{r}
 Total_2020_pres <- Total_2020 |>
   mutate(across(starts_with("Total"), ~ replace_na(. , 0)))|>
-  filter()
   group_by(County) |>
   summarize(sum(TotalVotes))
 ```
@@ -309,6 +309,31 @@ Trump20TotalCompare <- Trump20TotalCompare |>
   rename(Trumpvotes = `sum(TotalVotes).x`)|>
   mutate(PercentTrumpWon = (Trumpvotes/Allpresvotes)*100)
 ```
+
+```{r}
+Total_2024_pres<- total_election_2024 |>
+  filter(`Office Name` == "President - Vice Pres")|>
+  mutate(across(starts_with("Total"), ~ replace_na(. , 0)))|>
+  group_by(County)|>
+  summarize(sum(Total2024))
+```
+
+```{r}
+Total_2024_pres <- Total_2024_pres |>
+  rename(Totalpres2024 = `sum(Total2024)`)
+```
+
+```{r}
+Trump24TotalCompare <- Total_2024_pres |>
+  left_join(Total24CountyTrump, join_by(County == County))
+```
+
+```{r}
+Trump24TotalCompare <- Trump24TotalCompare |>
+  mutate(PercentTrumpWon24 = (Trump24/Totalpres2024)*100)
+```
+
+This will 
 
 //////////
 ```{r}
