@@ -19,7 +19,7 @@ library(dplyr)
 Questions: 
 1. What are the average ages of people in precincts in Maryland with the highest rates of election day voting and mail-in voting? 
 2. DONE Which precincts have the highest rates of early voting of people who voted? 
-3. How does early voting participation in Maryland for Governor compare to presidential elections? 
+3. DONE How does early voting participation in Maryland for Governor compare to presidential elections? 
 4. DONE For the precincts that swayed the most towards Trump from 2020 to 2024, what is their average income? 
 5. Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
 
