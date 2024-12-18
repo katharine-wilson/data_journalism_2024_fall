@@ -96,9 +96,52 @@ precinct_total_election_2024 <- precinct_total_election_2024 |>
 
 //////////////////////////////////////////////////
 Question #1:
- What are the average ages of people in precincts in Maryland with the highest rates of election day voting and mail-in voting? 
- 
- We need the Maryland voter files for this, we will request it this week. 
+What are the average ages of people in precincts in Maryland with the highest rates of election day voting and mail-in voting? 
+
+First, we need to find the precincts with the highest rates of election day voting and mail in voting in 2024. 
+
+```{r}
+voter_file_md <- read_csv("md_voters_for_match.csv")
+```
+
+```{r}
+voter_file_md <- voter_file_md |>
+  drop_na(BirthDate)|>
+  mutate(BirthDate = as.Date(BirthDate))|>
+  mutate(Birthyear=year(BirthDate))|>
+  mutate(age=2024 -Birthyear)
+```
+
+```{r}
+voting_counts <- read_csv("PG24_AllPrecincts.csv")
+```
+
+```{r}
+voting_counts <- voting_counts |>
+  mutate(election_day_votes = `Election Night Votes`)|>
+  mutate(Mail_In = `Mail-In Ballot 1 Votes`)|>
+  filter(`Office Name` == "President - Vice Pres")
+```
+
+```{r}
+voting_count_sum <- voting_counts |>
+  group_by(`County Name`, `Election District - Precinct`)|>
+  summarise(sum(Mail_In), sum(election_day_votes))
+```
+
+This shows the top precincts for people who voted by mail-in
+```{r}
+top_mail24 <- voting_count_sum |>
+  arrange(desc(`sum(Mail_In)`))
+```
+
+This shows the top precincts for people who voted on election day
+```{r}
+top_day <- voting_count_sum |>
+  arrange(desc(`sum(election_day_votes)`))
+```
+
+
 
 ////////////////////////////////////////////////
 
