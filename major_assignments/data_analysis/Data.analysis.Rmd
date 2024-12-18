@@ -4,6 +4,8 @@ author: "Katharine Wilson, Samuel Jane and Loretta Puwler"
 date: "2024-11-16"
 output: html_document
 ---
+
+Hello! Welcome to our data analysis project where we will be looking into Maryland election data. First, we are loading in any necessary packages.
 ```{r}
 install.packages("janitor")
 ```
@@ -15,6 +17,7 @@ library(janitor)
 library(dplyr)
 ```
 
+Below are the five questions we will be answering in this project. 
 
 Questions: 
 1. What are the average ages of people in counties in Maryland with the highest rates of election day voting and mail-in voting? 
@@ -24,19 +27,21 @@ Questions:
 5. Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
 
 
-First we are setting up the data sets for use. 
+First we are setting up some of the key data sets we will use for this assignment. 
 
 Early voting data from 2024:
 ```{r}
 early_voting <- read_csv("EarlyVoting RAW data.csv")
 ```
 
+This adds a column that combines all the days of early voting into one column 
 ```{r}
 md_earlyvote2024 <- early_voting |>
   mutate(across(starts_with("Day"), ~ replace_na(. , 0)))|>
   mutate(Early_Total2024 = Day1 + Day2 + Day3 + Day4 + Day5 +Day6 + Day7 + Day8)
 ```
 
+This combines all of the counties together to get a count of everyone who voted early in each county. 
 ```{r}
 md_earlyvote2024_squeezed <- md_earlyvote2024 |>
   group_by(COUNTY_NAME)|>
@@ -44,7 +49,7 @@ md_earlyvote2024_squeezed <- md_earlyvote2024 |>
   sum(Early_Total2024))
 ```
 
-**IMPORTANT ONE 
+This combines all of the precincts together to get a count of everyone who voted early in each precinct.  
 ```{r}
 precincts_md_earlyvote2024 <- md_earlyvote2024 |> 
   group_by(COUNTY_NAME, Precinct)|>
@@ -53,23 +58,24 @@ precincts_md_earlyvote2024 <- md_earlyvote2024 |>
   )
 ```
 
-
+This renames a column. 
 ```{r}
 precincts_md_earlyvote2024 <- precincts_md_earlyvote2024 |>
   rename(Early_Total2024 =`sum(Early_Total2024)`)
 ```
 
-
-Total voting data from 2024:
+Loading in total voting data from 2024:
 ```{r}
 total_election_2024 <- read_csv("PG24_AllPrecincts.csv")
 ```
 
+This adds a column with the total votes for each precinct for each candidate. 
 ```{r}
 total_election_2024 <- total_election_2024 |>
 mutate(Total2024 = `Early Votes` + `Election Night Votes` + `Mail-In Ballot 1 Votes` + `Mail-In Ballot 2 Votes` + `Provisional Votes`)
 ```
 
+This shows the count for total votes in each county in 2024. 
 ```{r}
 total_election_2024_squeezed <- total_election_2024 |>
   group_by(`County Name`)|>
@@ -77,6 +83,7 @@ total_election_2024_squeezed <- total_election_2024 |>
   sum(Total2024))
 ```
 
+This shows the total votes in 2024 per Maryland precinct
 ```{r}
 precinct_total_election_2024 <- total_election_2024 |>
   group_by(`County Name`, `Election District - Precinct`)|>
@@ -84,26 +91,25 @@ precinct_total_election_2024 <- total_election_2024 |>
   sum(Total2024))
 ```
 
+This removes the word "county" to clean the data file. 
 ```{r}
 precinct_total_election_2024 <- precinct_total_election_2024 |>
   mutate(`County Name` = str_remove(`County Name`," County"))
 ```
 
+This cleans up a column name. 
 ```{r}
 precinct_total_election_2024 <- precinct_total_election_2024 |>
   rename(Total2024 =`sum(Total2024)`)
 ```
 
-//////////////////////////////////////////////////
+/////////////////////////////////////////////////
 Question #1:
-What are the average ages of people in counties in Maryland with the highest rates of election day voting and mail-in voting? 
+What is the medium ages of people in Maryland counties with the highest rates of election day voting and mail-in voting for president?
 
-First, we need to find the counties with the highest rates of election day presidential voting and mail in voting in 2024. 
+First, we need to find the counties with the highest rates of election day presidential voting and mail in voting in 2024.
 
-```{r}
-voter_file_md <- read_csv("md_voters_for_match.csv")
-```
-
+First, we are taking the total election data file and renaming a column (to be easier to code with) and filtering it only for people who voted at the presidential level. 
 ```{r}
 voting_counts <- total_election_2024 |> 
   mutate(election_day_votes = `Election Night Votes`)|>
@@ -111,6 +117,7 @@ voting_counts <- total_election_2024 |>
   filter(`Office Name` == "President - Vice Pres")
 ```
 
+Now, I am adding columns to find the percent of total voters in each county who voted by mail and on election day. 
 ```{r}
 voting_count_sum <- voting_counts |>
   group_by(`County Name`)|>
@@ -180,8 +187,7 @@ The precinct with the highest early voting turnout rate in Maryland was in Anne 
 
 According to census reproter, this precinct has an average age of 33 (with most people between 18 and 64). The average income per household is $108,000 and most people live in homes with 2.4 people inside. This implies that most people who live in this precinct are comfortable and of an age where getting transportation and heading to the polls early is easier. 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
---------------
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 Question #3: 
 How does early voting participation in Maryland for Governor compare to presidential elections? 
 
@@ -191,12 +197,14 @@ First, we are going to load in the data for early voting 2022.
 early_voting_2022 <- read_csv("EarlyVoting RAW data 2022.csv")
 ```
 
+Now, we are going to clean up the early 2022 voting data (including creating a column with all the early voting day counts into one column). 
 ```{r}
 md_earlyvote2022 <- early_voting_2022 |>
   mutate(across(starts_with("Day"), ~ replace_na(. , 0)))|>
   mutate(Early_Total2022 = Day1 + Day2 + Day3 + Day4 + Day5 +Day6 + Day7 + Day8)
 ```
 
+This gives us the count of people who voted early in 2022 per county. 
 ```{r}
 md_earlyvote2022_squeezed <- md_earlyvote2022 |> 
   group_by(COUNTY_NAME)|>
@@ -204,11 +212,12 @@ md_earlyvote2022_squeezed <- md_earlyvote2022 |>
   sum(Early_Total2022))
 ```
 
+Renaming a column!
 ```{r}
 md_earlyvote2022_squeezed <-md_earlyvote2022_squeezed |>
   rename(Early_Total2022 = `sum(Early_Total2022)`)
 ```
-
+Renaming a column!
 ```{r}
 md_earlyvote2024_squeezed<-md_earlyvote2024_squeezed|>
      rename(Early_Total2024 = `sum(Early_Total2024)`)
@@ -219,27 +228,31 @@ Now, we are loading in the total election vote records for 2022 and cleaning up 
 total_vote_2022 <- read.csv("GG22_AllPrecincts.csv")
 ```
 
+This is adding a new column with the total votes for everything from this election. 
 ```{r}
 total_vote_2022 <- total_vote_2022|>
 mutate(Total2022 = Early.Votes + Election.Night.Votes + Mail.In.Ballot.1.Votes + Mail.In.Ballot.2.Votes + Provisional.Votes)
 ```
 
+This shows the total vote in each county for 2022. 
 ```{r}
 total_vote2022_squeezed <- total_vote_2022 |>
   group_by(County.Name)|>
   summarize(
   sum(Total2022))
 ```
-
+Renaming a column!
 ```{r}
 total_vote2022_squeezed <- total_vote2022_squeezed|>
   rename(Total2022 = `sum(Total2022)`)
 ```
 
+This takes out the word "county" so we can properly join later. 
 ```{r}
 total_vote2022_squeezed <-total_vote2022_squeezed|>
  mutate(County.Name = str_remove(County.Name," County"))
 ```
+This takes out the word "county" so we can properly join later. 
 
 ```{r}
 md_earlyvote2022_squeezed <- md_earlyvote2022_squeezed|>
@@ -259,26 +272,31 @@ Now, we will make a csv that includes the total and early vote numbers for the 2
 total_election_2024_squeezed <- total_election_2024_squeezed |>
   rename(Total2024 = `sum(Total2024)`)
 ```
+This takes out the word "county" so we can properly join later. 
 
 ```{r}
 total_election_2024_squeezed <- total_election_2024_squeezed |>
   mutate(`County Name` = str_remove(`County Name`," County"))
 ```
+This takes out the word "county" so we can properly join later. 
 
 ```{r}
 md_earlyvote2024_squeezed <- md_earlyvote2024_squeezed |>
   mutate(COUNTY_NAME = str_remove(COUNTY_NAME," County"))
 ```
 
+Now, this joins all the 2024 election data together. 
 ```{r}
 together_2024 <- total_election_2024_squeezed |>
   left_join(md_earlyvote2024_squeezed, join_by(`County Name` == COUNTY_NAME))
 ```
 
+This puts the 2022 and 2024 election data together so we can compare the two elections. 
 ```{r}
 all_together <- together_2024 |> left_join(together_2022, join_by(`County Name` == County.Name))
 ```
 
+This adds a column that shows the rate of early voting compared to the total amount of people who voted each year. 
 ```{r}
 all_together <- all_together |>
   mutate(EarlyRate2022 = (Early_Total2022/Total2022)*100)|>
@@ -295,14 +313,11 @@ Question #4:
 For the counties that swayed the most towards Trump from 2020 to 2024, what is their average income?  
 
 First, we are going to load in the 2020 total voting data. 
-
 ```{r}
 Total_2020 <-read_csv("All_By_Precinct_2020_General.csv")
 ```
 
-
-  rename(TotalVotes ==`Total Votes`)
-
+Next, we are going to filter this to only look at the presidential election and remove any nas that could mess up our data later on. 
 ```{r}
 Total_2020 <- Total_2020 |>
   filter(`Office Name` == "President - Vice Pres")|>
@@ -310,13 +325,14 @@ Total_2020 <- Total_2020 |>
   mutate(across(starts_with("Total"), ~ replace_na(. , 0)))
 ```
 
-
+This creates a dataframe just to look at the vote for Trump in 2020. 
 ```{r}
 Trump_Total_2020 <- Total_2020 |>
   filter(`Candidate Name` == "Donald J. Trump")|>
   mutate(across(starts_with("Total"), ~ replace_na(. , 0)))
 ```
 
+This creates a dataframe just to look at the vote for Trump in 2024. 
 ```{r}
 Trump_Total_2024 <-total_election_2024|>
   filter(`Candidate Name` == "Donald J. Trump and JD Vance")|>
@@ -360,6 +376,7 @@ Trump20TotalCompare <- Trump20TotalCompare |>
   mutate(PercentTrumpWon = (Trumpvotes/Allpresvotes)*100)
 ```
 
+This shows the number of people who voted for a presidential candidate in 2024 by county. 
 ```{r}
 Total_2024_pres<- total_election_2024 |>
   filter(`Office Name` == "President - Vice Pres")|>
@@ -367,17 +384,19 @@ Total_2024_pres<- total_election_2024 |>
   group_by(County)|>
   summarize(sum(Total2024))
 ```
-
+Renaming a column!
 ```{r}
 Total_2024_pres <- Total_2024_pres |>
   rename(Totalpres2024 = `sum(Total2024)`)
 ```
 
+This joins together the Trump voters and total voters (so we can later find a percent of presidential voters who voted for Trump)
 ```{r}
 Trump24TotalCompare <- Total_2024_pres |>
   left_join(Total24CountyTrump, join_by(County == County))
 ```
 
+This shows the percent of presidential voters who voted for Trump. 
 ```{r}
 Trump24TotalCompare <- Trump24TotalCompare |>
   mutate(PercentTrumpWon24 = (Trump24/Totalpres2024)*100)
@@ -398,7 +417,6 @@ AllTrumppres2420 <-AllTrumppres2420 |>
 The code above shows that the top counties that leaned more towards Trump in 2024 than in 2020 were Montgomery, Calvert and Caroline counties. 
 
 Now, we're going to look at what each of these counties average income is. 
-//////////
 ```{r}
 census_api_key("41f507ff77bfed12e56b9c9420926d8c02d5b09d", install=TRUE)
 ```
@@ -415,13 +433,6 @@ Caroline County: $63,027 per year
 These average incomes show that there was a broad switch to favoring Trump that included a wide range of average county wages. Montgomery and Calvert counties both have a relatively high average income were the top counties who swayed to Trump. Caroline County, in third place, had half of the average income as the top-two counties. 
 
 The counties that swayed the least towards Trump were Garrett, Charles and Anne Arundel. These counties had average incomes of $58,011 (Garrett), $107,808 (Charles) and $108,048. This shows again that the statwide lean towards Trump in Maryland counties did not seem to be determined by average income level - even though the economy was a big issue in campaign messaging. 
-
-```
-
-
-acs_data <- get_acs( geography = "county",  # You can change this to "state" or "tract" if needed variables ="B19013_001",  # Median household income variable code year = 2021,  # Year of ACS data survey = "acs5",  # 5-year estimates output = "wide"  # Wide format (gives you 'estimate' and 'moe' columns) ) # Check the structure of the datastr(acs_data) # Clean and calculate the average income by county average_income_by_county <- acs_data %>%select(NAME, estimate) %>%  # Keep only county name and income estimate group_by(NAME) %>%  # Group by county name summarize(avg_income = mean(estimate, na.rm = TRUE))  # Calculate average income per county # View the results head(average_income_by_county)
-
-Now that we have our data sets that include the number of people who voted for president in each county and the number
 
 NOTE: 
 01: Allegany
@@ -448,7 +459,6 @@ NOTE:
 22: Washington 
 23: Wicomico 
 24: Worchester 
-Then we will load the census data for the largest shifts and see of the average income correlates.
 
 //////////////////////////////////////////////////////////////////////////
 Question #5: Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
