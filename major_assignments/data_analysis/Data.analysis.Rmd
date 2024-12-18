@@ -185,7 +185,7 @@ combined_2024 <- combined_2024|>
 Our answer:
 The precinct with the highest early voting turnout rate in Maryland was in Anne Arundel County (precinct 005-032). The rest of the top five precincts were from Wicomico and Somerset. 
 
-According to census reproter, this precinct has an average age of 33 (with most people between 18 and 64). The average income per household is $108,000 and most people live in homes with 2.4 people inside. This implies that most people who live in this precinct are comfortable and of an age where getting transportation and heading to the polls early is easier. 
+According to census reporter, this precinct has an average age of 33 (with most people between 18 and 64). The average income per household is $108,000 and most people live in homes with 2.4 people inside. This implies that most people who live in this precinct are comfortable and of an age where getting transportation and heading to the polls early is easier. 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 Question #3: 
