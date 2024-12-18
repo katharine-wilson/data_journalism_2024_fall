@@ -24,7 +24,7 @@ Questions:
 2. Which precincts have the highest rates of early voting of people who voted? 
 3. How does early voting participation in Maryland for Governor compare to presidential elections? 
 4. For the precincts that swayed the most towards Trump from 2020 to 2024, what is their average income? 
-5. Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
+5. Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee and Memphis.
 
 
 First we are setting up some of the key data sets we will use for this assignment. 
@@ -461,7 +461,7 @@ NOTE:
 24: Worchester 
 
 //////////////////////////////////////////////////////////////////////////
-Question #5: Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
+Question #5: Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Memphis, Detroit and others.
 
 We know that Baltimore City (60.0%) and Prince George's County (62.9%) have heavy Black populations according to the U.S. Census bureau website. So, we are basing our analysis on these two counties.  
 
@@ -482,8 +482,7 @@ Shelby County, Tennessee (54.1% Black according to Census.gov) shifted by 2.42 %
 So, Baltimore County did not shift as much towards Trump in 2024 as other Black-majority areas we looked into. Prince George's County shifted about as mich as the other Black-majority areas we looked into did. 
 
 
-Milwakee data calculation data from: https://county.milwaukee.gov/EN/County-Clerk/Election-Commission/Election-Results
-
+Milwakee data from: https://county.milwaukee.gov/EN/County-Clerk/Election-Commission/Election-Results
 Shelby County work (data from: https://sos.tn.gov/elections/results:
 2024
 ```{r}
@@ -493,3 +492,4 @@ Shelby County work (data from: https://sos.tn.gov/elections/results:
 ```{r}
 36.42208 - ((129815/ (129815 + 246105 + 670 + 219 + 577 + 2426 + 241 + 229 +1601))*100)
 ```
+
