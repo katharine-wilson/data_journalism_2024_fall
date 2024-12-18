@@ -96,28 +96,16 @@ precinct_total_election_2024 <- precinct_total_election_2024 |>
 
 //////////////////////////////////////////////////
 Question #1:
-What are the average ages of people in precincts in Maryland with the highest rates of election day voting and mail-in voting? 
+What are the average ages of people in counties in Maryland with the highest rates of election day voting and mail-in voting? 
 
-First, we need to find the precincts with the highest rates of election day voting and mail in voting in 2024. 
+First, we need to find the counties with the highest rates of election day presidential voting and mail in voting in 2024. 
 
 ```{r}
 voter_file_md <- read_csv("md_voters_for_match.csv")
 ```
 
 ```{r}
-voter_file_md <- voter_file_md |>
-  drop_na(BirthDate)|>
-  mutate(BirthDate = as.Date(BirthDate))|>
-  mutate(Birthyear=year(BirthDate))|>
-  mutate(age=2024 -Birthyear)
-```
-
-```{r}
-voting_counts <- read_csv("PG24_AllPrecincts.csv")
-```
-
-```{r}
-voting_counts <- voting_counts |>
+voting_counts <- total_election_2024 |> 
   mutate(election_day_votes = `Election Night Votes`)|>
   mutate(Mail_In = `Mail-In Ballot 1 Votes`)|>
   filter(`Office Name` == "President - Vice Pres")
@@ -125,24 +113,42 @@ voting_counts <- voting_counts |>
 
 ```{r}
 voting_count_sum <- voting_counts |>
-  group_by(`County Name`, `Election District - Precinct`)|>
-  summarise(sum(Mail_In), sum(election_day_votes))
+  group_by(`County Name`)|>
+  summarise(sum(Mail_In), sum(election_day_votes), sum(Total2024))|>
+  mutate(MailInRate = (`sum(Mail_In)`/`sum(Total2024)`)*100)|>
+  mutate(DayRate =(`sum(election_day_votes)`/`sum(Total2024)`)*100)
 ```
 
-This shows the top precincts for people who voted by mail-in
+This shows the precincts with the highest rate of people who voted by mail (Howard, Anne Arundel, Calvert)
 ```{r}
 top_mail24 <- voting_count_sum |>
-  arrange(desc(`sum(Mail_In)`))
+  arrange(desc(MailInRate))
 ```
 
-This shows the top precincts for people who voted on election day
+This shows the top precincts for people who voted on election day (Allegany, Caroline, Dorchester)
 ```{r}
 top_day <- voting_count_sum |>
-  arrange(desc(`sum(election_day_votes)`))
+  arrange(desc(DayRate))
 ```
 
+Now, we're opening the ACS data to find the average age in these counties. 
+```{r}
+acs_data_age <- get_acs( geography = "county", variables = "B07402_001", year = 2021, survey = "acs5", output = "wide")
+```
 
+For counties with the highest rates of mail-in voting, here are the average ages: 
+- Howard 39.3
+- Anne Arundel 39.3
+- Calvert 40.6
 
+For counties with the highest rates of election day voting, here are the average ages: 
+- Allegany 42.3
+- Caroline 39.9
+- Dorchester 43.8 
+
+These results show that counties with a higher rate of election-day voting had an older average population. This could hint that older people are more inclined to vote in the traditional election-day format. 
+
+These results also how that counties with a higher rate of mail-in voters were younger than those with high election-day voting, implying that younger people in Maryland may be more open to voting by mail (a format promoted in more recent elections), 
 ////////////////////////////////////////////////
 
 Question #2: 
