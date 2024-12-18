@@ -463,25 +463,111 @@ NOTE:
 //////////////////////////////////////////////////////////////////////////
 Question #5: Did counties and precincts with heavy Black populations in Maryland shift toward Trump as much as other counties and areas did nationwide? Could compare PG and Baltimore to cities like Milwaukee, Detroit and others.
 
-We will be using census racial demographics for this (the acs5)
+We know that Baltimore City (60.0%) and Prince George's County (62.9%) have heavy Black populations according to the U.S. Census bureau website. So, we are basing our analysis on these two counties.  
 
 ```{r}
-acs5 <- load_variables(2022, "acs5", cache = TRUE)
-View(acs5)
+AllTrumppres2420
 ```
+
+Baltimore City (03) shifted by 1.4 percentage points towards Trump since 2020. 
+Prince George's County (17) shifted by 2.4 percentage points towards Trump since 2020. 
+
+Now, we will compare these shifts to that of other cities with a high Black population. 
+
+These cities are Detroit, Michigan, Milwaukee and Shelby County (where Memphis is). 
+
+Detroit (76.8% Black according to Census.gov) shifted by 2.64%. 
+Shelby County, Tennessee (54.1% Black according to Census.gov) shifted by 2.42 %. 
+
+So, Baltimore County did not shift as much towards Trump in 2024 as other Black-majority areas we looked into. Prince George's County shifted about as mich as the other Black-majority areas we looked into did. 
+
+
+Milwakee data calculation data from: https://county.milwaukee.gov/EN/County-Clerk/Election-Commission/Election-Results
+
+Shelby County work (data from: https://sos.tn.gov/elections/results:
+2024
+```{r}
+(118917 / (118917 + 201759 + 780 + 555 + 165 + 2492 + 1829))*100
+```
+
+```{r}
+36.42208 - ((129815/ (129815 + 246105 + 670 + 219 + 577 + 2426 + 241 + 229 +1601))*100)
+```
+
+
+
+////////IGNORE FOR NOW///////////
+Prince George's County 2020 Total Votes Per Precinct 
+```{r}
+Q5_PGTotal20 <-Total_2020 |>
+  filter(`Office Name` == "President - Vice Pres")|>
+  mutate(across(starts_with("Total"), ~ replace_na(. , 0)))|>
+  filter(County == 17)|>
+  group_by(`Election Precinct`,`Election District`)|>
+  summarise(sum(TotalVotes))|>
+  rename(TotalVotes = `sum(TotalVotes)`)
+```
+
+Prince George's County 2020 Trump Votes Per Precinct 
+```{r}
+Q5_PGTrump20 <-Total_2020 |>
+  filter(`Office Name` == "President - Vice Pres")|>
+  filter(`Candidate Name` == "Donald J. Trump")|>
+  mutate(across(starts_with("Total"), ~ replace_na(. , 0)))|>
+  filter(County == 17)|>
+  group_by(`Election Precinct`,`Election District`)|>
+  summarise(sum(TotalVotes))|>
+  rename(TrumpVotes = `sum(TotalVotes)`)
+```
+
+Baltimore County 2020 Total Votes Per Precinct 
+```{r}
+Q5_BaltTotal20 <-Total_2020 |>
+  filter(`Office Name` == "President - Vice Pres")|>
+  mutate(across(starts_with("Total"), ~ replace_na(. , 0)))|>
+  filter(County == 03)|>
+  group_by(`Election Precinct`,`Election District`)|>
+  summarise(sum(TotalVotes))|>
+  rename(TotalVotes = `sum(TotalVotes)`)
+```
+
+Baltimore County 2020 Trump Votes Per Precinct 
+```{r}
+Q5_BaltTrump20 <-Total_2020 |>
+  filter(`Office Name` == "President - Vice Pres")|>
+  filter(`Candidate Name` == "Donald J. Trump")|>
+  mutate(across(starts_with("Total"), ~ replace_na(. , 0)))|>
+  filter(County == 03)|>
+  group_by(`Election Precinct`,`Election District`)|>
+  summarise(sum(TotalVotes))|>
+  rename(TrumpVotes = `sum(TotalVotes)`)
+```
+
+Prince George's County 2024 Total Votes Per Precinct 
+```{r}
+Q5_PGTotal24 <- total_election_2024|>
+  filter(`Office Name` == "President - Vice Pres")|>
+  mutate(across(starts_with("Total"), ~ replace_na(. , 0)))|>
+  filter(County == 17)|>
+  group_by(`Election District - Precinct`)|>
+  summarise(sum(Total2024))|>
+  rename(TrumpVotes24 = `sum(Total2024)`)
+```
+
+Prince George's County 2024 Trump votes Per Precinct 
+```{r}
+Q5_PGTrump24 <- total_election_2024|>
+  filter(`Office Name` == "President - Vice Pres")|>
+  filter(`Candidate Name` == "Donald J. Trump and JD Vance")|>
+  mutate(across(starts_with("Total"), ~ replace_na(. , 0)))|>
+  filter(County == 17)|>
+  group_by(`Election District - Precinct`)|>
+  summarise(sum(Total2024))|>
+  rename(TrumpVotes24 = `sum(Total2024)`)
+```
+
+
 
 B02001_003 (Black or African American alone)
 
 We will load the census data for maryland with the highest black populations and then join that with the Trump voter percentage by county. Then we will add the raw number for Trump percentage and then compare it to maryland
-
-------NOTES______________
-
-Loading in census data 
-
-
-We will have to merge the 5-year acs to: 
-Find the average income for question 4 
-Find the precincts with the highest Black population for question 5 
-
-We will have to also use the 2020 early voting data and 2022 data for questions 3 and 4. 
-
